@@ -28,7 +28,7 @@ void MakeAccount(void) {
 	cout << "Account ID: ";
 	cin >> id;
 	cout << "Customer Name: ";
-	cin >> name;
+	cin.getline(name, 100);
 	cout << "Deposit amount: ";
 	cin >> balance;
 	cout << endl;
