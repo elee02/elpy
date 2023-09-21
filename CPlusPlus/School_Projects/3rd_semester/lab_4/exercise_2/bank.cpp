@@ -28,7 +28,7 @@ void MakeAccount(void) {
 	cout << "Account ID: ";
 	cin >> id;
 	cout << "Customer Name: ";
-	cin.getline(name, 100);
+	cin >> name; // unsafe read-in from the user
 	cout << "Deposit amount: ";
 	cin >> balance;
 	cout << endl;
