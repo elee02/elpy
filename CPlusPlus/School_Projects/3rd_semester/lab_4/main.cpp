@@ -11,20 +11,20 @@ int main(void) {
 		cin >> choice;
 		cout << endl;
 
-		switch (bank(choice)) {
-		case bank::MAKE:
+		switch (choice) {
+		case MAKE:
 			MakeAccount();
 			break;
-		case bank::DEPOSIT:
+		case DEPOSIT:
 			DepositMoney();
 			break;
-		case bank::WITHDRAW:
+		case WITHDRAW:
 			WithdrawMoney();
 			break;
-		case bank::INQUIRE:
+		case INQUIRE:
 			ShowAllAccInfo();
 			break;
-		case bank::EXIT:
+		case EXIT:
 			return 0;
 		default:
 			cout << "Illegal selection.." << endl;

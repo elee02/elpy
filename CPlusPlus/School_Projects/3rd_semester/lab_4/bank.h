@@ -8,7 +8,7 @@ void WithdrawMoney(void);
 void ShowAllAccInfo(void);
 int GetAccIdx(int);
 
-enum bank { MAKE = 1, DEPOSIT, WITHDRAW, INQUIRE, EXIT }; //socped enumeration cannot be used as constant expression (with switch statement)
+enum bank { MAKE = 1, DEPOSIT, WITHDRAW, INQUIRE, EXIT }; // scoped enumeration cannot be used as a constant expression with switch statement
 const int NAME_LEN = 40;
 const int MAX_ACC_NUM = 100;
 
