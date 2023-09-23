@@ -1,0 +1,25 @@
+version = 1
+
+[[analyzers]]
+name = "test-coverage"
+
+[[analyzers]]
+name = "docker"
+
+[[analyzers]]
+name = "csharp"
+
+[[analyzers]]
+name = "sql"
+
+[[analyzers]]
+name = "shell"
+
+[[analyzers]]
+name = "python"
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
+
+[[analyzers]]
+name = "cxx"
