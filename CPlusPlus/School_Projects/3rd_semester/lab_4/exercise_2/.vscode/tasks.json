@@ -13,7 +13,7 @@
                 "-g",
                 "-o",
                 "./bin/output",
-                "$(find ./src -name '*.cpp')"
+                "$(*.cpp)"
             ],
             "group": {
                 "kind": "build",
