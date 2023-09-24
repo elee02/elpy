@@ -11,7 +11,8 @@ void ShowMenu(void) {
 	cout << "2. Deposit" << endl;
 	cout << "3. Withdrawal" << endl;
 	cout << "4. Display all" << endl;
-	cout << "5. Exit program" << endl;
+	cout << "5. Delete account" << endl;
+	cout << "6. Exit program" << endl;
 }
 
 void MakeAccount(void) {
@@ -27,8 +28,9 @@ void MakeAccount(void) {
 	cout << "[Make Account]" << endl;
 	cout << "Account ID: ";
 	cin >> id;
+	cin.ignore(100, '\n');
 	cout << "Customer Name: ";
-	cin.getline(name,40, '\0'); // unsafe read-in from the user
+	cin.getline(name,40);
 	cout << "Deposit amount: ";
 	cin >> balance;
 	cout << endl;
@@ -85,6 +87,31 @@ void WithdrawMoney(void) {
 		}
 	}
 	cout << "This ID is not valid." << endl << endl;
+}
+
+void DeleteAccount(void) {
+	int id;
+	cout << "[Delete Account]" << endl;
+	cout << "Account ID (0 to delete all accounts): ";
+	cin >> id;
+
+	if (id == 0) {
+		accNum = 0;
+		cout << "All accounts have been deleted." << endl;
+		return;
+	}
+
+	for (int i = 0; i < accNum; i++) {
+		if (accArr[i].accID == id) {
+			for (int j = i; j < accNum - 1; j++) {
+				accArr[j] = accArr[j + 1];
+			}
+			accNum--;
+			cout << "Account " << id << " has been deleted." << endl;
+			return;
+		}
+	}
+	cout << "Account " << id << " not found." << endl;
 }
 
 void ShowAllAccInfo(void) {
