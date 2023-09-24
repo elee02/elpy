@@ -2,18 +2,17 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Compile all .cpp files",
+            "label": "build all cpp files",
             "type": "shell",
             "command": "g++",
             "args": [
-                "-std=c++11",
                 "-Wall",
                 "-Wextra",
                 "-pedantic",
-                "-g",
+                "-std=c++11",
                 "-o",
-                "./bin/output",
-                "$(*.cpp)"
+                "${workspaceFolder}/output/all",
+                "${workspaceFolder}/*.cpp"
             ],
             "group": {
                 "kind": "build",
