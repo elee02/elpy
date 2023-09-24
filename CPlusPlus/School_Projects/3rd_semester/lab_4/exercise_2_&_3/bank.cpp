@@ -37,7 +37,7 @@ void MakeAccount(void) {
 	cout << endl;
 
 	if (GetAccIdx(id) != -1) {
-		cout << "Error: Existing account ID" << endl;
+		cout << "Error: Existing account ID" << endl << endl;
 		return;
 	}
 
