@@ -9,10 +9,11 @@ void ShowMenu(void) {
 	cout << "-----Menu------" << endl;
 	cout << "1. Make Accout" << endl;
 	cout << "2. Deposit" << endl;
-	cout << "3. Withdrawal" << endl;
-	cout << "4. Display all" << endl;
-	cout << "5. Delete account" << endl;
-	cout << "6. Exit program" << endl;
+	cout << "3. Send Money" << endl; // Added
+	cout << "4. Withdrawal" << endl;
+	cout << "5. Display all" << endl;
+	cout << "6. Delete account" << endl;
+	cout << "7. Exit program" << endl;
 }
 
 void MakeAccount(void) {
@@ -97,7 +98,7 @@ void DeleteAccount(void) {
 
 	if (id == 0) {
 		accNum = 0;
-		cout << "All accounts have been deleted." << endl;
+		cout << "All accounts have been deleted." << endl << endl;
 		return;
 	}
 
@@ -107,11 +108,50 @@ void DeleteAccount(void) {
 				accArr[j] = accArr[j + 1];
 			}
 			accNum--;
-			cout << "Account " << id << " has been deleted." << endl;
+			cout << "Account " << id << " has been deleted." << endl << endl;
 			return;
 		}
 	}
-	cout << "Account " << id << " not found." << endl;
+	cout << "Account " << id << " not found." << endl << endl;
+}
+
+void SendMoney(void) {
+	int money;
+	int sender, receiver;
+	cout << "[Send Money]" << endl;
+	cout << "Withdrawal Account ID: ";
+	cin >> sender;
+	cout << "Receiving Account: ";
+	cin >> receiver;
+	if (sender == receiver) {
+		cout << "Cannot send money to the same account." << endl << endl;
+		return;
+	}
+	cout << "Amount: ";
+	cin >> money;
+
+	for (int i = 0; i < accNum; i++) {
+		if (accArr[i].accID == sender) {
+			if (accArr[i].balance < money) {
+				cout << "Not enough balance" << endl << endl;
+				return;
+			}
+			for (int j = 0; j < accNum; j++) {
+				if (accArr[j].accID == receiver) {
+					accArr[j].balance += money;
+					break;
+				}
+				if ((j == accNum - 1) && (accArr[j].accID != receiver)) {
+					cout << "Invalid Receiving Account!" << endl << endl;
+					return;
+				}
+			}
+			accArr[i].balance -= money;
+			cout << "Send completed" << endl << endl;
+			return;
+		}
+	}
+	cout << "Invalid Withdrawal Account!" << endl << endl;
 }
 
 void ShowAllAccInfo(void) {
@@ -119,6 +159,9 @@ void ShowAllAccInfo(void) {
 		cout << "Account ID: " << accArr[i].accID << endl;
 		cout << "Name: " << accArr[i].cusName << endl;
 		cout << "Balance: " << accArr[i].balance << endl << endl;
+	}
+	if (accNum == 0) {
+		cout << "No accounts exist." << endl << endl;
 	}
 }
 

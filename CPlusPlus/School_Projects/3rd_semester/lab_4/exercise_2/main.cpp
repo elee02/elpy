@@ -18,11 +18,17 @@ int main(void) {
 		case DEPOSIT:
 			DepositMoney();
 			break;
+		case SEND:
+			SendMoney();
+			break;
 		case WITHDRAW:
 			WithdrawMoney();
 			break;
 		case INQUIRE:
 			ShowAllAccInfo();
+			break;
+		case DELETE:
+			DeleteAccount();
 			break;
 		case EXIT:
 			return 0;

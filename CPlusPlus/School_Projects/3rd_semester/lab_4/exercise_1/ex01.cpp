@@ -46,14 +46,12 @@ void swap2(double& arg_1, double& arg_2) {
     arg_2 = help;
 }
 bool ascending(double& first, double& second) {
-    if (first > second) return false;
-    else if (second > first) return true;
-    return 0;
+    if (first < second) return true;
+    return false;
 }
 bool descending(double& first, double& second) {
     if (first > second) return true;
-    else if (second > first) return false;
-    return 0;
+    return false;
 }
 
 void print3(const double& line_1, const double& line_2, const double& line_3) {
