@@ -11,10 +11,19 @@ class Point {
     bool isInRange(int pos);
 
 public:
+    // Initializes the point with given x and y coordinates
     bool InitMembers(int xpos, int ypos);
+
+    // Sets the x-coordinate of the point
     bool SetX(int xpos);
+
+    // Sets the y-coordinate of the point
     bool SetY(int ypos);
+
+    // Returns the x-coordinate of the point
     int GetX() const;
+
+    // Returns the y-coordinate of the point
     int GetY() const;
 };
 

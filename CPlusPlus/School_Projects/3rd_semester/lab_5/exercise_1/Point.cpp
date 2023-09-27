@@ -1,3 +1,13 @@
+#include <iostream>
+#include "Point.h"
+using namespace std;
+
+bool Point::isInRange(int pos) {
+    if (pos >= POSMIN && pos <= POSMAX)
+        return true;
+
+    return false;
+}
 
 bool Point::InitMembers(int xpos, int ypos) {
     if (!isInRange(xpos) || !isInRange(ypos))
@@ -30,11 +40,4 @@ bool Point::SetY(int ypos) {
 
     m_y = ypos;
     return true;
-}
-
-bool Point::isInRange(int pos) {
-    if (pos >= POSMIN && pos <= POSMAX)
-        return true;
-
-    return false;
 }
