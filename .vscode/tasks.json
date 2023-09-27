@@ -10,6 +10,7 @@
                 "-Wextra",
                 "-pedantic",
                 "-std=c++11",
+                "${workspaceFolder}/*.cpp",
                 "-o",
                 "${workspaceFolder}/output/all",
                 "${workspaceFolder}/*.cpp"
@@ -17,9 +18,36 @@
             "group": "build"
         },
         {
+            "label": "build single cpp file",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-pedantic",
+                "-std=c++11",
+                "-o",
+                "${workspaceFolder}/output/${fileBasenameNoExtension}",
+                "${file}"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "run all cpp files",
+            "type": "shell",
+            "command": "${workspaceFolder}/output/all",
+            "group": "test"
+        },
+        {
+            "label": "run single cpp file",
+            "type": "shell",
+            "command": "${workspaceFolder}/output/${fileBasenameNoExtension}",
+            "group": "test"
+        },
+        {
             "type": "cppbuild",
-            "label": "C/C++: g++-9 build active file",
-            "command": "/usr/bin/g++-9",
+            "label": "C/C++: g++ build active file",
+            "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",

@@ -20,7 +20,7 @@ int main() {
     if (!rec.InitMembers(pos2, pos1))
         cout << "rec-1: Failure of Init" << endl;
     if (!rec.InitMembers(pos1, pos2))
-        cout << "rec-2: Failure of Init” << endl;
+        cout << "rec-2: Failure of Init" << endl;
 
     rec.ShowRecInfo();
 
