@@ -8,6 +8,7 @@ bool Rectangle::InitMembers(const Point& ul, const Point& lr) {
     
     m_upLeft = ul;
     m_lowRight = lr;
+    return true;
 }
 
 void Rectangle::ShowRecInfo() const {
