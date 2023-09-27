@@ -9,7 +9,7 @@
                 "-Wall",
                 "-Wextra",
                 "-pedantic",
-                "-std=c++11",
+                "-std=c++17",
                 "${workspaceFolder}/*.cpp",
                 "-o",
                 "${workspaceFolder}/output/all"
