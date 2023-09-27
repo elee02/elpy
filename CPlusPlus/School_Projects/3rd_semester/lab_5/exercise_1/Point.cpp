@@ -10,11 +10,8 @@ bool Point::isInRange(int pos) {
 }
 
 bool Point::InitMembers(int xpos, int ypos) {
-    if (!isInRange(xpos) || !isInRange(ypos))
+    if (!SetX(xpos) || !SetY(ypos))
         return false;
-
-    m_x = xpos;
-    m_y = ypos;
     return true;
 }
 

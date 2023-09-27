@@ -5,7 +5,7 @@ using namespace std;
 
 bool Rectangle::InitMembers(const Point& ul, const Point& lr) {
     // Check if the upper-left point is actually upper-left
-    if ((ul.GetX() > lr.GetX()) || (ul.GetY() > lr.GetY()))
+    if ((ul.GetX() > lr.GetX()) || (ul.GetY() < lr.GetY()))
         return false;
 
     m_upLeft = ul;
