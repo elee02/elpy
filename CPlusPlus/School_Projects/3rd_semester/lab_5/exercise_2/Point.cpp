@@ -3,8 +3,8 @@
 using namespace std;
 
 bool Point::isInRange(int pos) {
-    if (pos >= POSMIN && pos <= POSMAX)
-        return true;
+    if (pos >= POSMIN && pos <= POSMAX) return true;
+    if (pos == -1) return true;
 
     return false;
 }

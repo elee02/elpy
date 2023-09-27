@@ -5,8 +5,8 @@ const int POSMIN = 0;
 const int POSMAX = 100;
 
 class Point {
-    int m_x; // x-pos: range 0~100
-    int m_y; // y-pos: range 0~100
+    int m_x = -1; // x-pos: range 0~100
+    int m_y = -1; // y-pos: range 0~100
 
     bool isInRange(int pos);
 

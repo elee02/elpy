@@ -2,7 +2,6 @@
 #define __RECTANGLE_H__
 
 #include "Point.h"
-#include <optional>
 
 class Rectangle {
 private:
@@ -10,10 +9,6 @@ private:
     Point m_upRight;
     Point m_lowLeft;
     Point m_lowRight;
-    optional<int> tl = m_upLeft.GetX();
-    optional<int> bl = m_lowLeft.GetX();
-    optional<int> tr = m_upRight.GetX();
-    optional<int> br = m_lowRight.GetX();
     bool InitUpperLeftLowerRight(const Point& point_1, const Point& point_2);
     bool InitLowerLeftUpperRight(const Point& point_1, const Point& point_2);
     bool InitUpperRightLowerLeft(const Point& point_1, const Point& point_2);
