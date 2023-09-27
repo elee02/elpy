@@ -39,17 +39,12 @@ bool Rectangle::InitLowerRightUpperLeft(const Point& point_1, const Point& point
 }
 
 void Rectangle::ShowRecInfo() const {
-    int tl = m_upLeft.GetX();
-    int bl = m_lowLeft.GetX();
-    int tr = m_upRight.GetX();
-    int br = m_lowRight.GetX();
-
-    if (tl != -1 && br != -1) {
+    if (m_upLeft.GetX() != -1 && m_lowRight.GetX() != -1) {
         cout << "Top-Left: [" << m_upLeft.GetX() << ", ";
         cout << m_upLeft.GetY() << "]" << endl;
         cout << "Bottom-Right: [" << m_lowRight.GetX() << ", ";
         cout << m_lowRight.GetY() << "]" << endl;
-    } else if (bl != -1 && tr != -1) {
+    } else if (m_lowLeft.GetX() != -1 && m_upRight.GetX() != -1) {
         cout << "Bottom-Left: [" << m_lowLeft.GetX() << ", ";
         cout << m_lowLeft.GetY() << "]" << endl;
         cout << "Top-Right: [" << m_upRight.GetX() << ", ";
