@@ -1,3 +1,6 @@
+#include <iostream>
+#include "lib.h"
+using namespace std;
 // Exercise #4 main()
 int main() {
     Person ryu = { "Victor Ryu", "male", 30, "IGS2130v1@inha.ac.kr" };
