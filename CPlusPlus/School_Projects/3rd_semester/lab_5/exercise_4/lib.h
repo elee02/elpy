@@ -1,5 +1,5 @@
 #ifndef _LIB_H
-#define LIB_H
+#define _LIB_H
 
 #include <iostream>
 #include <string>
@@ -11,7 +11,6 @@ public:
     string sex;
     int age;
     string email;
-
     void introduceMyself(void);
 };
 
