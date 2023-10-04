@@ -14,6 +14,7 @@ class Point {
         : x{var_x}, y{var_y} {}
         Point(Point const& var_point)
         : x{var_point.x}, y{var_point.y} {}
+        Point() : x{0}, y{0} {}
         void info() const;
         void get(double& x, double& y) const;
 };
