@@ -9,9 +9,8 @@
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
             ],
-            "compilerPath": "/usr/bin/g++",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cStandard": "c23",
+            "cppStandard": "c++23",
             "intelliSenseMode": "macos-clang-x64"
         }
     ],
