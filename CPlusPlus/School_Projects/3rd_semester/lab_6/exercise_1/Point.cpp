@@ -3,16 +3,16 @@
 
 using namespace std;
 
-double Point::get_x() const {
+double Point::getx() const {
     return x;
 }
-double Point::get_y() const {
+double Point::gety() const {
     return y;
 }
 void Point::info() const {
     cout << "(x, y) = (" << x << ", " << y << ")" <<  endl;
 }
 void Point::get(double& var_x, double& var_y) const {
-    var_x = Point::get_x();
-    var_y = Point::get_y();
+    var_x = Point::getx();
+    var_y = Point::gety();
 }

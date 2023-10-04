@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     Circle c1;
-    Circle c2;
+    Circle c2{};
 
     Point p{ 10.5, 20.5 };
     Circle c3{ p, 20.0 };
@@ -18,7 +18,7 @@ int main() {
     cout << "\nArea of c3: " << c3.area() << endl;
     const Point& cent = c3.center();
     cout << "Center of c3: ";
-    cout << "[" << cent.get_x() << ", " << cent.gety() << "]\n";
+    cout << "[" << cent.getx() << ", " << cent.gety() << "]\n";
     cout << "Radius of c3: " << c3.radius() << endl;
     cout << "IsInside: " << c4.IsInside(Point{ 25.0, 8.0 }) << endl << endl;
 
