@@ -15,9 +15,9 @@ class Circle {
         Circle(double const& var_x, double const& var_y, double const& var_radius)
         : m_center{var_x, var_y}, m_radius{var_radius} {}
         Circle()
-        : m_center{Point()}, m_radius{0} {}
+        : m_center{}, m_radius{} {}
         void info() const;
-        void get(Point& center, double& radius) const;
+        void get(Point& var_center, double& var_radius) const;
         ~Circle() {
             cout << "Destruction of a class instance" << endl;
             info();

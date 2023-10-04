@@ -17,7 +17,7 @@ class Circle {
         Circle()
         : m_center{}, m_radius{} {}
         void info() const;
-        void get(Point& center, double& radius) const;
+        void get(Point& var_center, double& var_radius) const;
         double area() const;
         Point center() const;
         double radius() const;
