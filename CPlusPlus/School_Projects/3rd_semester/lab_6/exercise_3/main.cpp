@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     Circle c1;
-    Circle c2;
+    Circle c2{};
 
     Point p{ 10.5, 20.5 };
     Circle c3{ p, 20.0 };
