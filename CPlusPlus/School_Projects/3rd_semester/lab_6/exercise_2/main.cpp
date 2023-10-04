@@ -1,17 +1,18 @@
-int main()
-{
-	Triangle t1{ 10.5, 4.5 };
-	const Triangle t2{ 7.0, 3.0 };
+#include <iostream>
+#include "Circle.h"
+using namespace std;
 
-	std::cout << "Triangle t1{ 10.5, 4.5 }" << std::endl;
-	std::cout << "  base: " << t1.getBase() << std::endl;
-	std::cout << "  height: " << t1.getHeight() << std::endl;
-	std::cout << "  area: " << t1.area() << std::endl << std::endl;
+int main() {
+    Circle c1;
+    Circle c2{};
 
-	std::cout << "const Triangle t2{ 7.0, 3.0 }" << std::endl;
-	std::cout << "  base: " << t2.getBase() << std::endl;
-	std::cout << "  height: " << t2.getHeight() << std::endl;
-	std::cout << "  area: " << t2.area() << std::endl << std::endl;
+    Point p{ 10.5, 20.5 };
+    Circle c3{ p, 20.0 };
+    Circle c4{ 20.5, 10.5, 10.0 };
 
-	return 0;
+    cout << "c1.info: "; c1.info();
+    cout << "c2.info: "; c2.info();
+    cout << "c3.info: "; c3.info();
+    cout << "c4.info: "; c4.info();
+    return 0;
 }
