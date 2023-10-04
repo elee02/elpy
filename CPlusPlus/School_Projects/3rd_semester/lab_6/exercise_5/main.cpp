@@ -3,8 +3,8 @@ using namespace std;
 
 class Triangle {
 private:
-	const double m_base;
-	const double m_height;
+	double m_base;
+	double m_height;
 public:
 	Triangle(const double &base = 0, const double &height = 0)
 	: m_base{ base }, m_height{ height } {
