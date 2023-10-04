@@ -8,7 +8,7 @@ void Circle::get(Point& var_center, double& var_radius) const {
     var_radius = radius;
 }
 
-void Circle::info() const {
+void Circle::info(void) const {
     cout << "Center: "; center.info();
     cout << ", Radius: " << radius << endl;
 }

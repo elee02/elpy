@@ -13,9 +13,9 @@ class Circle {
         Circle(Point const& var_center, double const& var_radius) 
         : center{var_center}, radius{var_radius} {}
         Circle(double const& var_x, double const& var_y, double const& var_radius)
-        : center{Point(var_x, var_y)}, radius{var_radius} {}
+        : center{var_x, var_y}, radius{var_radius} {}
         Circle()
-        : center{Point()}, radius{0} {}
+        : center{}, radius{} {}
         void info() const;
         void get(Point& center, double& radius) const;
         ~Circle() {
