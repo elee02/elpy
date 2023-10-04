@@ -8,7 +8,7 @@ class Point {
     private:
         double x, y;
     public:
-        Point(double const& var_x = 0, double const& var_y = 0) 
+        Point(double const& var_x, double const& var_y) 
         : x{var_x}, y{var_y} {}
         Point(Point const& var_point)
         : x{var_point.x}, y{var_point.y} {}
