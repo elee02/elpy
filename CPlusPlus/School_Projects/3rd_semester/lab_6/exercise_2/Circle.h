@@ -7,15 +7,15 @@ using namespace std;
 
 class Circle {
     private:
-        Point center;
-        double radius;
+        Point m_center;
+        double m_radius;
     public:
         Circle(Point const& var_center, double const& var_radius) 
-        : center{var_center}, radius{var_radius} {}
+        : m_center{var_center}, m_radius{var_radius} {}
         Circle(double const& var_x, double const& var_y, double const& var_radius)
-        : center{Point(var_x, var_y)}, radius{var_radius} {}
+        : m_center{Point(var_x, var_y)}, m_radius{var_radius} {}
         Circle()
-        : center{Point()}, radius{0} {}
+        : m_center{Point()}, m_radius{0} {}
         void info() const;
         void get(Point& center, double& radius) const;
         ~Circle() {
