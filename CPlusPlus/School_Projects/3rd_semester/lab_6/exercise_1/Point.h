@@ -1,5 +1,5 @@
-#ifndef _Poin_H_
-#define _Poin_H_
+#ifndef _Point_H_
+#define _Point_H_
 
 #include <iostream>
 using namespace std;
@@ -7,8 +7,8 @@ using namespace std;
 class Point {
     private:
         double x, y;
-        double get_x() const;
-        double get_y() const;
+        double getx() const;
+        double gety() const;
     public:
         Point(double const& var_x, double const& var_y) 
         : x{var_x}, y{var_y} {}
