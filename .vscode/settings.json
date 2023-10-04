@@ -4,5 +4,6 @@
         "iostream": "cpp",
         "optional": "cpp",
         "iosfwd": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
 }
