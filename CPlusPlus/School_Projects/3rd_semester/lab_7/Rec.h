@@ -6,13 +6,13 @@ using namespace std;
 
 class Rectangle {
     private:
-        double m_width;
-        double m_height;
+        double m_width{0};
+        double m_height{0};
     public:
         Rectangle() = default;
-        Rectangle(const double& width, const double& height) : m_width{width}, m_height{height} {}
-        Rectangle& setWidth(const double& width);
-        Rectangle& setHeight(const double& height);
+        Rectangle(double width, double height) : m_width{width}, m_height{height} {}
+        Rectangle& setWidth(double width);
+        Rectangle& setHeight(double height);
         void Display() const;
 };
 
