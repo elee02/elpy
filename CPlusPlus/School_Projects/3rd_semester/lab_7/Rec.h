@@ -13,6 +13,7 @@ class Rectangle {
         Rectangle(const double& width, const double& height) : m_width{width}, m_height{height} {}
         Rectangle& setWidth(const double& width);
         Rectangle& setHeight(const double& height);
+        void Display() const;
 };
 
 #endif  // REC_H_
