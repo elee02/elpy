@@ -78,12 +78,10 @@ void DepositMoney(void) {
 	cout << "Deposit amount: ";
 	cin >> money;
 
-	for (int i = 0; i < accNum; i++) {
-		if (accArr[i].getID() == id) {
-			accArr[i].setBalance(accArr[i].getBalance() + money);
-			cout << "Deposit completed" << endl << endl;
-			return;
-		}
+	int idx = GetAccIdx(id);
+	if (idx != -1) {
+		accArr[idx].setBalance(accArr[idx].getBalance() + money);
+		return;
 	}
 	cout << "This ID is not valid." << endl << endl;
 }
@@ -97,17 +95,15 @@ void WithdrawMoney(void) {
 	cout << "Withdrawal amount: ";
 	cin >> money;
 
-	for (int i = 0; i < accNum; i++) {
-		if (accArr[i].getID() == id) {
-			if (accArr[i].getBalance() < money) {
-				cout << "Not enough balance" << endl << endl;
-				return;
-			}
-
-			accArr[i].setBalance(accArr[i].getBalance() - money);
-			cout << "Withdrawal completed" << endl << endl;
+	int idx = GetAccIdx(id);
+	if (idx != -1) {
+		if (accArr[idx].getBalance() < money) {
+			cout << "Not enough balance" << endl << endl;
 			return;
 		}
+		accArr[idx].setBalance(accArr[idx].getBalance() - money);
+		cout << "Withdrawal completed" << endl << endl;
+		return;
 	}
 	cout << "This ID is not valid." << endl << endl;
 }
@@ -151,29 +147,23 @@ void SendMoney(void) {
 	}
 	cout << "Amount: ";
 	cin >> money;
-
-	for (int i = 0; i < accNum; i++) {
-		if (accArr[i].getID() == sender) {
-			if (accArr[i].getBalance() < money) {
-				cout << "Not enough balance" << endl << endl;
-				return;
-			}
-			for (int j = 0; j < accNum; j++) {
-				if (accArr[j].getID() == receiver) {
-					accArr[j].setBalance(accArr[j].getBalance() + money);
-					break;
-				}
-				if ((j == accNum - 1) && (accArr[j].getID() != receiver)) {
-					cout << "Invalid Receiving Account!" << endl << endl;
-					return;
-				}
-			}
-			accArr[i].setBalance(accArr[i].getBalance() - money);
-			cout << "Send completed" << endl << endl;
-			return;
-		}
+	int idx_sender = GetAccIdx(sender);
+	int idx_receiver = GetAccIdx(receiver);
+	if (idx_receiver == -1) {
+		cout << "Invalid Receiving Account!" << endl << endl;
+		return;
+	}else if (idx_sender == -1) {
+		cout << "Invalid Withdrawal Account!" << endl << endl;
+		return;
 	}
-	cout << "Invalid Withdrawal Account!" << endl << endl;
+
+	if (accArr[idx_sender].getBalance() < money) {
+		cout << "Not enough balance" << endl << endl;
+		return;
+	}
+	accArr[idx_sender].setBalance(accArr[idx_sender].getBalance() - money);
+	accArr[idx_receiver].setBalance(accArr[idx_receiver].getBalance() + money);
+	cout << "Send completed" << endl << endl;
 }
 
 void ShowAllAccInfo(void) {
