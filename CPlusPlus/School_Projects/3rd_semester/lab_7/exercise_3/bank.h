@@ -2,6 +2,7 @@
 #define _BANK_H_
 
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 void ShowMenu(void);
@@ -39,16 +40,23 @@ public:
             cusName[i] = arr.cusName[i];
         }
     }
+    Account& operator=(const Account& arr) {
+        accID = arr.accID;
+        balance = arr.balance;
+        for (int i = 0; i < NAME_LEN; ++i) {
+            cusName[i] = arr.cusName[i];
+        }
+        return *this;
+    }
     ~Account() {
         cout << "Name '";
-        if (cusName != nullptr)
-            for (int i = 0; i < NAME_LEN; ++i) {
-                if (cusName[i] != '\0')
+        if (cusName != nullptr) {
+            for (int i = 0; i < NAME_LEN; ++i)
                 cout << cusName[i];
-            }
-        cout <<  "' is deleted!" << endl;
-        delete[] cusName;        
+            delete[] cusName;        
         }
+        cout <<  "' is deleted!" << endl;
+    }
 
     int getID() const;
     void setID(int);

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "bank.h"
 using namespace std;
 
@@ -18,10 +19,7 @@ char* Account::getName() const {
 	return cusName;
 }
 void Account::setName(const char* new_name) {
-	for (int i = 0; i < NAME_LEN; i++) {
-		if (new_name[i] == '\0') break;
-		cusName[i] = new_name[i];
-	}
+	strcpy(cusName, new_name);
 }
 
 Account accArr[MAX_ACC_NUM]; // Account array
@@ -169,10 +167,8 @@ void ShowAllAccInfo(void) {
 		cout << "Account ID: " << accArr[i].getID() << endl;
 		cout << "Name: ";
 		char* namePtr = accArr[i].getName();
-		for (int j = 0; j < NAME_LEN; j++) {
-			if(namePtr[j] != '\0')
-				cout << namePtr[j];
-		}
+		for (int j = 0; j < NAME_LEN; j++)
+			cout << namePtr[j];
 		cout << endl;
 		cout << "Balance: " << accArr[i].getBalance() << endl << endl;
 	}
