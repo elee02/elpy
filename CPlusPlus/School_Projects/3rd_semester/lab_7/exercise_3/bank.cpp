@@ -60,7 +60,7 @@ void MakeAccount(void) {
 		cout << "Error: Existing account ID" << endl << endl;
 		return;
 	}
-
+	
 	accArr[accNum].setID(id);
 	accArr[accNum].setBalance(balance);
 	accArr[accNum].setName(name);
