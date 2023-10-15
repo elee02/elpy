@@ -10,6 +10,6 @@ def str_format(height, width):
             pattern += (".|." + 2 * (height - i - 1) * ".|.").center(width, "-") + "\n"
         else:
             pattern += ("WELCOME").center(width, "-") + "\n"
-    
+
     return pattern
 print(str_format(height, width))
