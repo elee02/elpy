@@ -119,16 +119,14 @@ void DeleteAccount(void) {
 		cout << "All accounts have been deleted." << endl << endl;
 		return;
 	}
-
-	for (int i = 0; i < accNum; i++) {
-		if (accArr[i].getID() == id) {
-			for (int j = i; j < accNum - 1; j++) {
-				accArr[j] = accArr[j + 1];
-			}
-			accNum--;
-			cout << "Account " << id << " has been deleted." << endl << endl;
-			return;
+	int idx = GetAccIdx(id);
+	if (idx != -1) {
+		for (int j = idx; j < accNum - 1; j++) {
+			accArr[j] = accArr[j + 1];
 		}
+		accNum--;
+		cout << "Account " << id << " has been deleted." << endl << endl;
+		return;
 	}
 	cout << "Account " << id << " not found." << endl << endl;
 }
