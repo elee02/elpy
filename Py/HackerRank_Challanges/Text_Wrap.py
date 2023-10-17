@@ -1,3 +1,4 @@
+''' You are given a string S and width w.'''
 import textwrap
 
 def wrap(string, max_width):
