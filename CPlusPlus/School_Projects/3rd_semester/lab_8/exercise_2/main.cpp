@@ -32,6 +32,7 @@ int main(void) {
             cout << " = " << cc.divide(value) << endl;
             break;
         }
+    }
 
     cout << endl << endl;
     for (i = 0; i < 10; ++i) {
