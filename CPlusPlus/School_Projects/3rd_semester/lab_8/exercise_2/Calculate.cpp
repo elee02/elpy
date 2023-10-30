@@ -8,12 +8,12 @@ double Calculate::getValue() const
 }
 void Calculate::addToHistory(char op, double value)
 {
-    if (m_index > 5) {
+    if (m_index == 5) {
         for (int i = 0; i < 4; ++i) {
             m_histop[i] = m_histop[i + 1];
             m_histvalue[i] = m_histvalue[i + 1];
         }
-        m_index = 5;
+        m_index = 4;
     }
     m_histop[m_index] = op;
     m_histvalue[m_index] = value;
@@ -55,8 +55,6 @@ bool Calculate::lastOperation(char& op, double& value)
 
 void Calculate::undo()
 {
-    if (m_index == 0)
-        return;
     switch (m_histop[m_index - 1]) {
     case '+':
         m_value -= m_histvalue[m_index - 1];
