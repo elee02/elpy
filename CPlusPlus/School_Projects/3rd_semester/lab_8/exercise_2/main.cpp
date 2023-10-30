@@ -13,6 +13,7 @@ int main(void) {
             cout << op << ", " << value << endl;
 
         if (flag) {
+            
             cc.undo();
             cout << "Undo the last math operation..." << endl;
             cout << "Value inside the class object: ";
