@@ -3,6 +3,7 @@
 #include<ctime>
 #include<cstdlib>
 using namespace std;
+
 class IntArray
 {
 private:
