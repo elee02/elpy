@@ -55,19 +55,19 @@ bool Calculate::lastOperation(char& op, double& value)
 
 void Calculate::undo()
 {
-    switch (m_histop[m_index - 1]) {
+    m_index--
+    switch (m_histop[m_index]) {
     case '+':
-        m_value -= m_histvalue[m_index - 1];
+        m_value -= m_histvalue[m_index];
         break;
     case '-':
-        m_value += m_histvalue[m_index - 1];
+        m_value += m_histvalue[m_index];
         break;
     case '*':
-        m_value /= m_histvalue[m_index - 1];
+        m_value /= m_histvalue[m_index];
         break;
     case '/':
-        m_value *= m_histvalue[m_index - 1];
+        m_value *= m_histvalue[m_index];
         break;
     }
-    m_index--;
 }
