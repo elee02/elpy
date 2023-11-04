@@ -55,7 +55,7 @@ bool Calculate::lastOperation(char& op, double& value)
 
 void Calculate::undo()
 {
-    m_index--
+    m_index--;
     switch (m_histop[m_index]) {
     case '+':
         m_value -= m_histvalue[m_index];
