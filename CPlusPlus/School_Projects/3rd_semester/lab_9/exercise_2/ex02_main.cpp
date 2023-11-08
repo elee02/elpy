@@ -4,7 +4,6 @@ class Test {
     int id;
     int m_data();
 public:
-   
 }
 
 int main() {
