@@ -5,11 +5,18 @@ class Test {
     int id;
     int m_data;
 public:
-    Test(int data) : m_data{data} {}
+    Test(int data) : m_data{data} {
+        id = num_obj;
+        num_obj++;
+    }
     int getData() const { return m_data;}
     int getID() const { return id;}
-    static int NumOfObjects() { return num_obj}
+    static int NumOfObjects();
 };
+
+int Test::num_obj = 0;
+int Test::NumOfObjects() { return num_obj;}
+
 int main() {
     cout << "# of objects: ";
     cout << Test::NumOfObjects() << endl;
