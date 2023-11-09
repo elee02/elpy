@@ -1,12 +1,15 @@
 #include <iostream>
+using namespace std;
 class Test {
-    int static num_obj;
+    static int num_obj;
     int id;
-    int m_data();
+    int m_data;
 public:
-   
-}
-
+    Test(int data) : m_data{data} {}
+    int getData() const { return m_data;}
+    int getID() const { return id;}
+    static int NumOfObjects() { return num_obj}
+};
 int main() {
     cout << "# of objects: ";
     cout << Test::NumOfObjects() << endl;
