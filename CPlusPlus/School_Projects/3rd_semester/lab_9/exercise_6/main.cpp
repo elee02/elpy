@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+class EbookLibrary;
 class Book {
 public:
     Book(const string& title, const string& ISBN, double price)
@@ -17,6 +18,7 @@ protected:
     string title;
     string ISBN;
     double price;
+    friend class EbookLibrary;
 };
 
 class EBook : public Book {
@@ -34,22 +36,32 @@ public:
 private:
     string DRMKey;
     string format;
+    friend class EbookLibrary;
 };
 
 const int MAX_BOOK = 100;
-
-class EBook;
-
 class EBookLibrary {
 private:
     EBook* m_books[MAX_BOOK];
-    int m_cnt;
+    int m_cnt{0};
 
 public:
-    EBookLibrary();
-    ~EBookLibrary();
-    void AddBook(EBook* book);
-    void ShowAllBooks();
+    EBookLibrary() = default;
+    ~EBookLibrary() {
+        for (int i = 0; i < m_cnt; ++i) {
+            delete m_books[i];
+        }
+    }
+    void AddBook(EBook* book) {
+        m_books[m_cnt] = book;
+        m_cnt++;
+    };
+    void ShowAllBooks() {
+        for (int i = 0; i < m_cnt; i++) {
+            m_books[i]->ShowEBookInfo();
+            cout << endl;
+        }
+    };
 };
 
 int main() {

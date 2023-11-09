@@ -35,6 +35,7 @@ private:
     string DRMKey;
     string format;
 };
+
 int main() {
     Book book("Modern C++ Programming Cookbook", "1800208987", 49.99);
     book.ShowBookInfo();
