@@ -1,6 +1,6 @@
 #include <iostream>
 class Test {
-    int static num_obj{0};
+    int static num_obj;
     int id;
     int m_data();
 public:
