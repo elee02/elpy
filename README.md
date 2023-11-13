@@ -1,32 +1,18 @@
-# elpy
-MAIN_DIR
+# School Homework Repository
 
-```markdown
-# Project Title
+This repository contains my school homework assignments, primarily focused on Python and C++ programming.
 
-A brief description of what this project does and who it's for.
+## Description
+
+The purpose of this repository is to store, track, and share my progress on school assignments. It includes various projects and exercises related to Python and C++ programming. It may also contain other important stuff related to my coursework.
 
 ## Installation
 
-Instructions on how to install and get your project running.
+To clone and run this repository, you'll need Git installed on your computer. From your command line:
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-```
-
-## Usage
-
-Instructions on how to use your project after it's installed.
-
-```bash
-python your-script.py
-```
-
-## Contributing
-
-Instructions on how to contribute to your project.
-
-```markdown
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+# Clone this repository
+git clone https://github.com/elee02/elpy.git
+# Go into the repository
+cd elpy
 ```
