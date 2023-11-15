@@ -27,14 +27,10 @@ public:
     Account(int id, int bal,const char* name)
     : accID {id}, balance {bal} {
         cusName = new char[NAME_LEN];
-        for (int i = 0; i < NAME_LEN; i++) {
-            cusName[i] = name[i];
-        }
+        strncpy(cusName, name, NAME_LEN);
     }
     Account(const Account& arr) : accID{arr.accID}, balance{arr.balance} {
-        for (int i = 0; i < NAME_LEN; ++i) {
-            cusName[i] = arr.cusName[i];
-        }
+        strncpy(cusName, arr.cusName, NAME_LEN);
     }
     Account& operator=(const Account& arr) {
         accID = arr.accID;

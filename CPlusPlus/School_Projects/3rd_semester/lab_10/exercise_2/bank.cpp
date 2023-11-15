@@ -3,7 +3,7 @@ Bank Program v0 -> 4
 */
 #include <iostream>
 #include <cstring>
-#include "bank -> h"
+#include "bank.h"
 using namespace std;
 
 int Account::getID() const {
