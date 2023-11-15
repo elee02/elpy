@@ -11,7 +11,7 @@ void nameTest(char[][50], char**);
 int main() {
     // 2D array
     char names[20][50];
-
+    
     // list of pointers to char arrays
     char* _names_[20];
 
