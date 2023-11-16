@@ -65,6 +65,8 @@ class AccountHandler {
 private:
     Account* accArr[MAX_ACC_NUM]; // Account array
     int accNum = 0;      // # of accounts
+    
+    int GetAccIdx(int);
 public:
     void ShowMenu(void);
     void MakeAccount(void);
@@ -74,8 +76,6 @@ public:
     void ShowAllAccInfo(void);
     void DeleteAccount(void);
     void SendMoney(void);
-    int GetAccIdx(int);
-
 };
 
 #endif // _BANK_H_

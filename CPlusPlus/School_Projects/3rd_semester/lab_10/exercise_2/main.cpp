@@ -6,32 +6,33 @@ Bank Program v0.4
 using namespace std;
 
 int main(void) {
+	AccountHandler mn;
 	int choice;
 
-	while (1) {
-		ShowMenu();
+	while (true) {
+		mn.ShowMenu();
 		cout << "Select menu: ";
 		cin >> choice;
 		cout << endl;
 
 		switch (choice) {
 		case MAKE:
-			MakeAccount();
+			mn.MakeAccount();
 			break;
 		case DEPOSIT:
-			DepositMoney();
+			mn.DepositMoney();
 			break;
 		case SEND:
-			SendMoney();
+			mn.SendMoney();
 			break;
 		case WITHDRAW:
-			WithdrawMoney();
+			mn.WithdrawMoney();
 			break;
 		case INQUIRE:
-			ShowAllAccInfo();
+			mn.ShowAllAccInfo();
 			break;
 		case DELETE:
-			DeleteAccount();
+			mn.DeleteAccount();
 			break;
 		case EXIT:
 			return 0;
