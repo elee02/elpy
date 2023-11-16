@@ -75,7 +75,6 @@ public:
     void WithdrawMoney(void);
     void ShowAllAccInfo(void);
     void DeleteAccount(void);
-    void SendMoney(void);
 };
 
 #endif // _BANK_H_

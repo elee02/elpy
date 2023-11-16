@@ -27,13 +27,13 @@ void Account::setName(const char* new_name) {
 
 void AccountHandler::ShowMenu(void) {
 	cout << "-----Menu------" << endl;
-	cout << "1 ->  Make Accout" << endl;
-	cout << "2 ->  Deposit" << endl;
-	cout << "3 ->  Send Money" << endl; // Added
-	cout << "4 ->  Withdrawal" << endl;
-	cout << "5 ->  Display all" << endl;
-	cout << "6 ->  Delete account" << endl;
-	cout << "7 ->  Exit program" << endl;
+	cout << "1 -> Make Accout" << endl;
+	cout << "2 -> Deposit" << endl;
+	cout << "3 -> Send Money" << endl; // Added
+	cout << "4 -> Withdrawal" << endl;
+	cout << "5 -> Display all" << endl;
+	cout << "6 -> Delete account" << endl;
+	cout << "7 -> Exit program" << endl;
 }
 
 void AccountHandler::MakeAccount(void) {
@@ -49,9 +49,9 @@ void AccountHandler::MakeAccount(void) {
 	cout << "[Make Account]" << endl;
 	cout << "Account ID: ";
 	cin >> id;
-	cin -> ignore(100, '\n');
+	cin.ignore(100, '\n');
 	cout << "Customer Name: ";
-	cin -> getline(name,40);
+	cin.getline(name,40);
 	cout << "Deposit amount: ";
 	cin >> balance;
 	cout << endl;
@@ -78,10 +78,10 @@ void AccountHandler::DepositMoney(void) {
 
 	int idx = GetAccIdx(id);
 	if (idx != -1) {
-		accArr[idx] -> setBalance(accArr[idx] -> getBalance() + money);
+		cout << "This ID is not valid! " << endl << endl;
 		return;
 	}
-	cout << "This ID is not valid -> " << endl << endl;
+	accArr[idx] -> setBalance(accArr[idx] -> getBalance() + money);
 }
 
 void AccountHandler::WithdrawMoney(void) {
@@ -129,7 +129,7 @@ void AccountHandler::DeleteAccount(void) {
 	cout << "Account " << id << " not found -> " << endl << endl;
 }
 
-void AccountHandler::SendMoney(void) {
+void AccountHandler::SendMoney() {
 	int money;
 	int sender, receiver;
 	cout << "[Send Money]" << endl;
