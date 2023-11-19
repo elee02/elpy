@@ -22,5 +22,5 @@ char* Account::getName() const {
 	return cusName;
 }
 void Account::setName(const char* new_name) {
-	strcpy(cusName, new_name);
+	strncpy(cusName, new_name, NAME_LEN);
 }
