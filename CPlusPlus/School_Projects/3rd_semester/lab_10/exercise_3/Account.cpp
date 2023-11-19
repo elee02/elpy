@@ -2,6 +2,10 @@
 #include <iostream>
 using namespace std;
 
+void Account::Deposit(int money) {
+	balance = money;
+}
+
 int Account::getID() const {
 	return accID;
 }

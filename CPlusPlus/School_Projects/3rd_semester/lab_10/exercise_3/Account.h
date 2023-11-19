@@ -37,6 +37,7 @@ public:
         cout <<  "' is deleted!" << endl;
     }
 
+    virtual void Deposit(int);
     int getID() const;
     void setID(int);
 

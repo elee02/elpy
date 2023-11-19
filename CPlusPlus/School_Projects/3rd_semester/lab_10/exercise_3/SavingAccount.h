@@ -6,10 +6,14 @@
 using namespace std;
 
 class SavingAccount : public Account {
-private:
+protected:
     int m_rate;
 public:
-    SavingAccount(double rate) : m_rate{rate} {}
+    SavingAccount() : m_rate{0} {}
+    SavingAccount(int rate) : m_rate{rate} {}
+    SavingAccount(int id, int bal, const char* name, int rate) : Account(id, bal, name), m_rate{rate} {}
+    
+    void Deposit(int) override;
 };
 
 #endif
