@@ -1,4 +1,6 @@
 #include "AccountHandler.h"
+#include "SavingAccount.h"
+#include "HighCreditAccount.h"
 #include <iostream>
 using namespace std;
 
@@ -17,30 +19,66 @@ void AccountHandler::MakeAccount(void) {
 	int id;
 	char name[NAME_LEN];
 	int balance;
-
+	int int_rate;
+	int cr_rating;
 	if (accNum >= MAX_ACC_NUM) {
 		cout << "Sorry! cannot make an accout anymore." << endl;
 		return;
 	}
 
-	cout << "[Make Account]" << endl;
-	cout << "Account ID: ";
-	cin >> id;
-	cin.ignore(100, '\n'); 
-	cout << "Customer Name: ";
-	cin.getline(name,40);
-	cout << "Deposit amount: ";
-	cin >> balance;
-	cout << endl;
+	while (true) {
+		cout << "[Select Account Type]" << endl;
+		cout << "1. Saving Account" << endl;
+		cout << "2. High Credit Account" << endl;
+		cout << "Select: ";
+		cin >> accType;
+		switch (accType) {
+		case 1:
+			cout << "[Make Saving Account]" << endl;
+			cout << "Account ID: ";
+			cin >> id;
+			cin.ignore(100, '\n'); 
+			cout << "Customer Name: ";
+			cin.getline(name,40);
+			cout << "Deposit amount: ";
+			cin >> balance;
+			cout << "Interest Rate: ";
+			cin >> int_rate;
+			cout << endl;
+
+			accArr[accNum] = new SavingAccount(id, balance, name, int_rate); 
+			break;
+		case 2:
+			cout << "[Make High Credit Account]" << endl;
+			cout << "Account ID: ";
+			cin >> id;
+			cin.ignore(100, '\n'); 
+			cout << "Customer Name: ";
+			cin.getline(name,40);
+			cout << "Deposit amount: ";
+			cin >> balance;
+			cout << "Interest Rate: ";
+			cin >> int_rate;
+			cout << "Credit Rating (A:1, B:2, C:3): ";
+			cin >> cr_rating;
+			cout << endl;
+
+			accArr[accNum] = new HighCreditAccount(id, balance, name, int_rate, cr_rating); 
+			break;
+		default:
+			cout << "Illegal Selection" << endl << endl;
+			continue;
+		}
+		break;
+	}
+	
 
 	if (GetAccIdx(id) != -1) {
 		cout << "Error: Existing account ID" << endl << endl;
 		return;
 	}
 	
-	accArr[accNum].setID(id);
-	accArr[accNum].setBalance(balance);
-	accArr[accNum].setName(name);
+	accArr[accNum] -> Deposit(balance);
 	accNum++;
 }
 
@@ -58,7 +96,7 @@ void AccountHandler::DepositMoney(void) {
 		cout << "This ID is not valid." << endl << endl;
 		return;
 	}
-	accArr[idx].setBalance(accArr[idx].getBalance() + money);
+	accArr[idx] -> setBalance(accArr[idx] -> getBalance() + money);
 	cout << "Deposit completed" << endl << endl;
 }
 
@@ -73,11 +111,11 @@ void AccountHandler::WithdrawMoney(void) {
 
 	int idx = GetAccIdx(id);
 	if (idx != -1) {
-		if (accArr[idx].getBalance() < money) {
+		if (accArr[idx] -> getBalance() < money) {
 			cout << "Not enough balance" << endl << endl;
 			return;
 		}
-		accArr[idx].setBalance(accArr[idx].getBalance() - money);
+		accArr[idx] -> setBalance(accArr[idx] -> getBalance() - money);
 		cout << "Withdrawal completed" << endl << endl;
 		return;
 	}
@@ -131,24 +169,24 @@ void AccountHandler::SendMoney() {
 		return;
 	}
 
-	if (accArr[idx_sender].getBalance() < money) {
+	if (accArr[idx_sender] -> getBalance() < money) {
 		cout << "Not enough balance" << endl << endl;
 		return;
 	}
-	accArr[idx_sender].setBalance(accArr[idx_sender].getBalance() - money);
-	accArr[idx_receiver].setBalance(accArr[idx_receiver].getBalance() + money);
+	accArr[idx_sender] -> setBalance(accArr[idx_sender] -> getBalance() - money);
+	accArr[idx_receiver] -> setBalance(accArr[idx_receiver] -> getBalance() + money);
 	cout << "Sending completed" << endl << endl;
 }
 
 void AccountHandler::ShowAllAccInfo(void) {
 	for (int i = 0; i < accNum; i++) {
-		cout << "Account ID: " << accArr[i].getID() << endl;
+		cout << "Account ID: " << accArr[i] -> getID() << endl;
 		cout << "Name: ";
-		char* namePtr = accArr[i].getName();
+		char* namePtr = accArr[i] -> getName();
 		for (int j = 0; j < NAME_LEN; j++)
 			cout << namePtr[j];
 		cout << endl;
-		cout << "Balance: " << accArr[i].getBalance() << endl << endl;
+		cout << "Balance: " << accArr[i] -> getBalance() << endl << endl;
 	}
 	if (accNum == 0) {
 		cout << "No accounts exist" << endl << endl;
@@ -157,7 +195,7 @@ void AccountHandler::ShowAllAccInfo(void) {
 
 int AccountHandler::GetAccIdx(int id) {
 	for (int i = 0; i < accNum; i++) {
-		if (accArr[i].getID() == id) {
+		if (accArr[i] -> getID() == id) {
 			return i;
 		}
 	}

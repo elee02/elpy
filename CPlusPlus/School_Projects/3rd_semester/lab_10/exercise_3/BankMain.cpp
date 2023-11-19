@@ -2,6 +2,7 @@
 Bank Program v0.5
 */
 #include "AccountHandler.h"
+#include "BankCommon.h"
 #include <iostream>
 using namespace std;
 
@@ -37,7 +38,7 @@ int main(void) {
 		case EXIT:
 			return 0;
 		default:
-			cout << "Illegal selection.." << endl;
+			cout << "Illegal Selection" << endl;
 		}
 	}
 	return 0;

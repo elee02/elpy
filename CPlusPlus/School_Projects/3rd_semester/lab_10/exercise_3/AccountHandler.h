@@ -7,12 +7,17 @@ using namespace std;
 
 class AccountHandler {
 private:
-    Account* accArr; // Account array
+    Account** accArr; // Account array
     int accNum;      // # of accounts
+    int accType;
     
     int GetAccIdx(int);
 public: 
-    AccountHandler() : accArr{new Account[MAX_ACC_NUM]}, accNum{0} {}
+    AccountHandler() : accNum{0} {
+        for (int i = 0; i < MAX_ACC_NUM; i++) {
+            accArr[i] = new Account;
+        }
+    }
     ~AccountHandler() {
         delete[] accArr;
         cout << "AccountHandler Destructor Called" << endl;
