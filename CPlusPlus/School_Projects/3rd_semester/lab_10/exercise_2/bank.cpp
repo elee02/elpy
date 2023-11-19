@@ -77,7 +77,7 @@ void AccountHandler::DepositMoney(void) {
 	cin >> money;
 
 	int idx = GetAccIdx(id);
-	if (idx != -1) {
+	if (idx == -1) {
 		cout << "This ID is not valid." << endl << endl;
 		return;
 	}
