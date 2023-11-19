@@ -1,8 +1,8 @@
 /*
-Bank Program v0.4
+Bank Program v0.5
 */
+#include "AccountHandler.h"
 #include <iostream>
-#include "bank.h"
 using namespace std;
 
 int main(void) {
