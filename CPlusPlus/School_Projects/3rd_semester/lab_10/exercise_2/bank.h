@@ -64,6 +64,10 @@ private:
     int GetAccIdx(int);
 public: 
     AccountHandler() : accArr{new Account[MAX_ACC_NUM]}, accNum{0} {}
+    ~AccountHandler() {
+        delete[] accArr;
+        cout << "AccountHandler Destructor Called";
+    }
     void ShowMenu(void);
     void MakeAccount(void);
     void DepositMoney(void);
