@@ -27,13 +27,13 @@ void Account::setName(const char* new_name) {
 
 void AccountHandler::ShowMenu(void) {
 	cout << "-----Menu------" << endl;
-	cout << "1 -> Make Accout" << endl;
-	cout << "2 -> Deposit" << endl;
-	cout << "3 -> Send Money" << endl; // Added
-	cout << "4 -> Withdrawal" << endl;
-	cout << "5 -> Display all" << endl;
-	cout << "6 -> Delete account" << endl;
-	cout << "7 -> Exit program" << endl;
+	cout << "1. Make Accout" << endl;
+	cout << "2. Deposit" << endl;
+	cout << "3. Send Money" << endl; // Added
+	cout << "4. Withdrawal" << endl;
+	cout << "5. Display all" << endl;
+	cout << "6. Delete account" << endl;
+	cout << "7. Exit program" << endl;
 }
 
 void AccountHandler::MakeAccount(void) {
@@ -61,9 +61,9 @@ void AccountHandler::MakeAccount(void) {
 		return;
 	}
 	
-	accArr[accNum] -> setID(id);
-	accArr[accNum] -> setBalance(balance);
-	accArr[accNum] -> setName(name);
+	accArr[accNum].setID(id);
+	accArr[accNum].setBalance(balance);
+	accArr[accNum].setName(name);
 	accNum++;
 }
 
@@ -81,7 +81,7 @@ void AccountHandler::DepositMoney(void) {
 		cout << "This ID is not valid." << endl << endl;
 		return;
 	}
-	accArr[idx] -> setBalance(accArr[idx] -> getBalance() + money);
+	accArr[idx].setBalance(accArr[idx].getBalance() + money);
 }
 
 void AccountHandler::WithdrawMoney(void) {
@@ -95,11 +95,11 @@ void AccountHandler::WithdrawMoney(void) {
 
 	int idx = GetAccIdx(id);
 	if (idx != -1) {
-		if (accArr[idx] -> getBalance() < money) {
+		if (accArr[idx].getBalance() < money) {
 			cout << "Not enough balance" << endl << endl;
 			return;
 		}
-		accArr[idx] -> setBalance(accArr[idx] -> getBalance() - money);
+		accArr[idx].setBalance(accArr[idx].getBalance() - money);
 		cout << "Withdrawal completed" << endl << endl;
 		return;
 	}
@@ -138,7 +138,7 @@ void AccountHandler::SendMoney() {
 	cout << "Receiving Account: ";
 	cin >> receiver;
 	if (sender == receiver) {
-		cout << "Cannot send money to the same account -> " << endl << endl;
+		cout << "Cannot send money to the same account." << endl << endl;
 		return;
 	}
 	cout << "Amount: ";
@@ -153,24 +153,24 @@ void AccountHandler::SendMoney() {
 		return;
 	}
 
-	if (accArr[idx_sender] -> getBalance() < money) {
+	if (accArr[idx_sender].getBalance() < money) {
 		cout << "Not enough balance" << endl << endl;
 		return;
 	}
-	accArr[idx_sender] -> setBalance(accArr[idx_sender] -> getBalance() - money);
-	accArr[idx_receiver] -> setBalance(accArr[idx_receiver] -> getBalance() + money);
+	accArr[idx_sender].setBalance(accArr[idx_sender].getBalance() - money);
+	accArr[idx_receiver].setBalance(accArr[idx_receiver].getBalance() + money);
 	cout << "Send completed" << endl << endl;
 }
 
 void AccountHandler::ShowAllAccInfo(void) {
 	for (int i = 0; i < accNum; i++) {
-		cout << "Account ID: " << accArr[i] -> getID() << endl;
+		cout << "Account ID: " << accArr[i].getID() << endl;
 		cout << "Name: ";
-		char* namePtr = accArr[i] -> getName();
+		char* namePtr = accArr[i].getName();
 		for (int j = 0; j < NAME_LEN; j++)
 			cout << namePtr[j];
 		cout << endl;
-		cout << "Balance: " << accArr[i] -> getBalance() << endl << endl;
+		cout << "Balance: " << accArr[i].getBalance() << endl << endl;
 	}
 	if (accNum == 0) {
 		cout << "No accounts exist. " << endl << endl;
@@ -179,7 +179,7 @@ void AccountHandler::ShowAllAccInfo(void) {
 
 int AccountHandler::GetAccIdx(int id) {
 	for (int i = 0; i < accNum; i++) {
-		if (accArr[i] -> getID() == id) {
+		if (accArr[i].getID() == id) {
 			return i;
 		}
 	}
