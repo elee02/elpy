@@ -82,6 +82,7 @@ void AccountHandler::DepositMoney(void) {
 		return;
 	}
 	accArr[idx].setBalance(accArr[idx].getBalance() + money);
+	cout << "Deposit completed" << endl << endl;
 }
 
 void AccountHandler::WithdrawMoney(void) {
@@ -103,7 +104,7 @@ void AccountHandler::WithdrawMoney(void) {
 		cout << "Withdrawal completed" << endl << endl;
 		return;
 	}
-	cout << "This ID is not valid." << endl << endl;
+	cout << "This ID is not valid" << endl << endl;
 }
 
 void AccountHandler::DeleteAccount(void) {
@@ -114,7 +115,7 @@ void AccountHandler::DeleteAccount(void) {
 
 	if (id == 0) {
 		accNum = 0;
-		cout << "All accounts have been deleted." << endl << endl;
+		cout << "All accounts have been deleted" << endl << endl;
 		return;
 	}
 	int idx = GetAccIdx(id);
@@ -123,10 +124,10 @@ void AccountHandler::DeleteAccount(void) {
 			accArr[j] = accArr[j + 1];
 		}
 		accNum--;
-		cout << "Account " << id << " has been deleted. " << endl << endl;
+		cout << "Account " << id << " has been deleted" << endl << endl;
 		return;
 	}
-	cout << "Account " << id << " not found. " << endl << endl;
+	cout << "Account " << id << " not found" << endl << endl;
 }
 
 void AccountHandler::SendMoney() {
@@ -138,7 +139,7 @@ void AccountHandler::SendMoney() {
 	cout << "Receiving Account: ";
 	cin >> receiver;
 	if (sender == receiver) {
-		cout << "Cannot send money to the same account." << endl << endl;
+		cout << "Cannot send money to the same account" << endl << endl;
 		return;
 	}
 	cout << "Amount: ";
@@ -159,7 +160,7 @@ void AccountHandler::SendMoney() {
 	}
 	accArr[idx_sender].setBalance(accArr[idx_sender].getBalance() - money);
 	accArr[idx_receiver].setBalance(accArr[idx_receiver].getBalance() + money);
-	cout << "Send completed" << endl << endl;
+	cout << "Sending completed" << endl << endl;
 }
 
 void AccountHandler::ShowAllAccInfo(void) {
@@ -173,7 +174,7 @@ void AccountHandler::ShowAllAccInfo(void) {
 		cout << "Balance: " << accArr[i].getBalance() << endl << endl;
 	}
 	if (accNum == 0) {
-		cout << "No accounts exist. " << endl << endl;
+		cout << "No accounts exist" << endl << endl;
 	}
 }
 

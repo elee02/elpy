@@ -66,7 +66,7 @@ public:
     AccountHandler() : accArr{new Account[MAX_ACC_NUM]}, accNum{0} {}
     ~AccountHandler() {
         delete[] accArr;
-        cout << "AccountHandler Destructor Called";
+        cout << "AccountHandler Destructor Called" << endl;
     }
     void ShowMenu(void);
     void MakeAccount(void);
