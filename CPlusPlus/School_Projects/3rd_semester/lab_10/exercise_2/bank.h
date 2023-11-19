@@ -21,12 +21,9 @@ private:
     char* cusName{nullptr};
     friend class AccountHandler;
 public:
-    Account() {
-        cusName = new char[NAME_LEN];
-    }
-    Account(int id, int bal,const char* name)
-    : accID {id}, balance {bal} {
-        cusName = new char[NAME_LEN];
+    Account() : cusName{new char[NAME_LEN]} {}
+    Account(int id, int bal, const char* name)
+    : accID {id}, balance {bal}, cusName{new char[NAME_LEN]} {
         strncpy(cusName, name, NAME_LEN);
     }
     Account(const Account& arr) : accID{arr.accID}, balance{arr.balance} {
@@ -35,9 +32,7 @@ public:
     Account& operator=(const Account& arr) {
         accID = arr.accID;
         balance = arr.balance;
-        for (int i = 0; i < NAME_LEN; ++i) {
-            cusName[i] = arr.cusName[i];
-        }
+        strncpy(cusName, arr.cusName, NAME_LEN);
         return *this;
     }
     ~Account() {
@@ -63,11 +58,12 @@ public:
 
 class AccountHandler {
 private:
-    Account* accArr[MAX_ACC_NUM]; // Account array
-    int accNum = 0;      // # of accounts
+    Account* accArr; // Account array
+    int accNum;      // # of accounts
     
     int GetAccIdx(int);
-public:
+public: 
+    AccountHandler() : accArr{new Account[MAX_ACC_NUM]}, accNum{0} {}
     void ShowMenu(void);
     void MakeAccount(void);
     void DepositMoney(void);

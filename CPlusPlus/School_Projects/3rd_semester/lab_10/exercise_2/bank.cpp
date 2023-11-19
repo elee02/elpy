@@ -49,7 +49,7 @@ void AccountHandler::MakeAccount(void) {
 	cout << "[Make Account]" << endl;
 	cout << "Account ID: ";
 	cin >> id;
-	cin.ignore(100, '\n');
+	cin.ignore(100, '\n'); 
 	cout << "Customer Name: ";
 	cin.getline(name,40);
 	cout << "Deposit amount: ";
