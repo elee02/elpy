@@ -1,5 +1,5 @@
 /*
-Bank Program v0 -> 4
+Bank Program v0.4
 */
 #include <iostream>
 #include <cstring>
@@ -42,7 +42,7 @@ void AccountHandler::MakeAccount(void) {
 	int balance;
 
 	if (accNum >= MAX_ACC_NUM) {
-		cout << "Sorry! cannot make an accout anymore -> " << endl;
+		cout << "Sorry! cannot make an accout anymore." << endl;
 		return;
 	}
 
@@ -78,7 +78,7 @@ void AccountHandler::DepositMoney(void) {
 
 	int idx = GetAccIdx(id);
 	if (idx != -1) {
-		cout << "This ID is not valid! " << endl << endl;
+		cout << "This ID is not valid." << endl << endl;
 		return;
 	}
 	accArr[idx] -> setBalance(accArr[idx] -> getBalance() + money);
@@ -103,7 +103,7 @@ void AccountHandler::WithdrawMoney(void) {
 		cout << "Withdrawal completed" << endl << endl;
 		return;
 	}
-	cout << "This ID is not valid -> " << endl << endl;
+	cout << "This ID is not valid. " << endl << endl;
 }
 
 void AccountHandler::DeleteAccount(void) {
@@ -114,7 +114,7 @@ void AccountHandler::DeleteAccount(void) {
 
 	if (id == 0) {
 		accNum = 0;
-		cout << "All accounts have been deleted -> " << endl << endl;
+		cout << "All accounts have been deleted." << endl << endl;
 		return;
 	}
 	int idx = GetAccIdx(id);
@@ -123,10 +123,10 @@ void AccountHandler::DeleteAccount(void) {
 			accArr[j] = accArr[j + 1];
 		}
 		accNum--;
-		cout << "Account " << id << " has been deleted -> " << endl << endl;
+		cout << "Account " << id << " has been deleted. " << endl << endl;
 		return;
 	}
-	cout << "Account " << id << " not found -> " << endl << endl;
+	cout << "Account " << id << " not found. " << endl << endl;
 }
 
 void AccountHandler::SendMoney() {
@@ -173,7 +173,7 @@ void AccountHandler::ShowAllAccInfo(void) {
 		cout << "Balance: " << accArr[i] -> getBalance() << endl << endl;
 	}
 	if (accNum == 0) {
-		cout << "No accounts exist -> " << endl << endl;
+		cout << "No accounts exist. " << endl << endl;
 	}
 }
 
