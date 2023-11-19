@@ -103,7 +103,7 @@ void AccountHandler::WithdrawMoney(void) {
 		cout << "Withdrawal completed" << endl << endl;
 		return;
 	}
-	cout << "This ID is not valid. " << endl << endl;
+	cout << "This ID is not valid." << endl << endl;
 }
 
 void AccountHandler::DeleteAccount(void) {
