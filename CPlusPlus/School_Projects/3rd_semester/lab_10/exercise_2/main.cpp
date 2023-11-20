@@ -15,26 +15,26 @@ int main(void) {
 		cin >> choice;
 		cout << endl;
 
-		switch (choice) {
-		case MAKE:
+		switch (bank(choice)) {
+		case bank::MAKE:
 			mn.MakeAccount();
 			break;
-		case DEPOSIT:
+		case bank::DEPOSIT:
 			mn.DepositMoney();
 			break;
-		case SEND:
+		case bank::SEND:
 			mn.SendMoney();
 			break;
-		case WITHDRAW:
+		case bank::WITHDRAW:
 			mn.WithdrawMoney();
 			break;
-		case INQUIRE:
+		case bank::INQUIRE:
 			mn.ShowAllAccInfo();
 			break;
-		case DELETE:
+		case bank::DELETE:
 			mn.DeleteAccount();
 			break;
-		case EXIT:
+		case bank::EXIT:
 			return 0;
 		default:
 			cout << "Illegal selection.." << endl;
