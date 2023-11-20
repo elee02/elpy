@@ -49,13 +49,13 @@ public:
         return *this;
     }
     ~Account() {
-        cout << "Name '";
+        cout << "Pointer No_";
         if (cusName != nullptr) {
             for (int i = 0; i < NAME_LEN; ++i) 
-                cout << cusName[i];
+                cout << i << ": " << cusName;
             delete[] cusName;        
         }
-        cout <<  "' is deleted!" << endl;
+        cout <<  " is deleted!" << endl;
     }
 
     int getID() const;
