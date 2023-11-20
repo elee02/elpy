@@ -28,26 +28,21 @@ private:
     int balance{0};
     char* cusName{nullptr};
 public:
-    Account() {
-        cusName = new char[NAME_LEN];
-    }
+    Account() : cusName{new char[NAME_LEN]} {}
     Account(int id, int bal,const char* name)
-    : accID {id}, balance {bal} {
-        cusName = new char[NAME_LEN];
-        for (int i = 0; i < NAME_LEN; i++) {
-            cusName[i] = name[i];
-        }
+    : accID {id}, balance {bal}, cusName{new char[NAME_LEN]} {
+        strncpy(cusName, name, NAME_LEN);
     }
     Account(const Account& arr) : accID{arr.accID}, balance{arr.balance} {
-        for (int i = 0; i < NAME_LEN; ++i) {
-            cusName[i] = arr.cusName[i];
-        }
+        strncpy(cusName, arr.cusName, NAME_LEN);
     }
     Account& operator=(const Account& arr) {
-        accID = arr.accID;
-        balance = arr.balance;
-        for (int i = 0; i < NAME_LEN; ++i) {
-            cusName[i] = arr.cusName[i];
+        if (this != &arr) {
+            accID = arr.accID;
+            balance = arr.balance;
+            delete[] cusName;
+            cusName = new char[NAME_LEN];
+            strncpy(cusName, arr.cusName, NAME_LEN);
         }
         return *this;
     }
