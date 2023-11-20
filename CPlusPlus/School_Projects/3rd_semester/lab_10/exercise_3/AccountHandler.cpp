@@ -19,13 +19,10 @@ void AccountHandler::MakeAccount(void) {
 	int id;
 	char name[NAME_LEN];
 	int balance;
-	int int_rate;
-	int cr_rating;
 	if (accNum >= MAX_ACC_NUM) {
 		cout << "Sorry! cannot make an accout anymore." << endl;
 		return;
 	}
-
 	while (true) {
 		cout << "[Select Account Type]" << endl;
 		cout << "1. Saving Account" << endl;
@@ -34,36 +31,10 @@ void AccountHandler::MakeAccount(void) {
 		cin >> accType;
 		switch (accType) {
 		case 1:
-			cout << "[Make Saving Account]" << endl;
-			cout << "Account ID: ";
-			cin >> id;
-			cin.ignore(100, '\n'); 
-			cout << "Customer Name: ";
-			cin.getline(name,40);
-			cout << "Deposit amount: ";
-			cin >> balance;
-			cout << "Interest Rate: ";
-			cin >> int_rate;
-			cout << endl;
-
-			accArr[accNum] = new SavingAccount(id, balance, name, int_rate); 
+			MakeSavingAccount(id, balance, name);
 			break;
 		case 2:
-			cout << "[Make High Credit Account]" << endl;
-			cout << "Account ID: ";
-			cin >> id;
-			cin.ignore(100, '\n'); 
-			cout << "Customer Name: ";
-			cin.getline(name,40);
-			cout << "Deposit amount: ";
-			cin >> balance;
-			cout << "Interest Rate: ";
-			cin >> int_rate;
-			cout << "Credit Rating (A:1, B:2, C:3): ";
-			cin >> cr_rating;
-			cout << endl;
-
-			accArr[accNum] = new HighCreditAccount(id, balance, name, int_rate, cr_rating); 
+			MakeHighCreditAccount(id, balance, name);
 			break;
 		default:
 			cout << "Illegal Selection" << endl << endl;
@@ -80,6 +51,45 @@ void AccountHandler::MakeAccount(void) {
 	
 	accArr[accNum] -> Deposit(balance);
 	accNum++;
+}
+
+void AccountHandler::MakeSavingAccount(int& id, int& balance, char* name) {
+	int int_rate;
+
+	cout << "[Make Saving Account]" << endl;
+	cout << "Account ID: ";
+	cin >> id;
+	cin.ignore(100, '\n'); 
+	cout << "Customer Name: ";
+	cin.getline(name,40);
+	cout << "Deposit amount: ";
+	cin >> balance;
+	cout << "Interest Rate: ";
+	cin >> int_rate;
+	cout << endl;
+
+	accArr[accNum] = new SavingAccount(id, balance, name, int_rate); 
+}
+
+void AccountHandler::MakeHighCreditAccount(int& id, int& balance, char* name) {
+	int int_rate;
+	int cr_rating;
+
+	cout << "[Make High Credit Account]" << endl;
+	cout << "Account ID: ";
+	cin >> id;
+	cin.ignore(100, '\n'); 
+	cout << "Customer Name: ";
+	cin.getline(name,40);
+	cout << "Deposit amount: ";
+	cin >> balance;
+	cout << "Interest Rate: ";
+	cin >> int_rate;
+	cout << "Credit Rating (A:1, B:2, C:3): ";
+	cin >> cr_rating;
+	cout << endl;
+
+	accArr[accNum] = new HighCreditAccount(id, balance, name, int_rate, cr_rating); 
 }
 
 void AccountHandler::DepositMoney(void) {

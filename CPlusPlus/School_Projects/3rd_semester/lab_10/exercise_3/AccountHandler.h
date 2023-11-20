@@ -25,7 +25,11 @@ public:
         cout << "AccountHandler Destructor Called" << endl;
     }
     void ShowMenu(void);
+
     void MakeAccount(void);
+    void MakeSavingAccount(int&, int&, char*);
+    void MakeHighCreditAccount(int&, int&, char*);
+
     void DepositMoney(void);
     void SendMoney(void); // Added
     void WithdrawMoney(void);
