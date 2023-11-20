@@ -82,6 +82,7 @@ void DepositMoney(void) {
 	int idx = GetAccIdx(id);
 	if (idx != -1) {
 		accArr[idx].setBalance(accArr[idx].getBalance() + money);
+		cout << endl;
 		return;
 	}
 	cout << "This ID is not valid." << endl << endl;
@@ -162,7 +163,7 @@ void SendMoney(void) {
 	}
 	accArr[idx_sender].setBalance(accArr[idx_sender].getBalance() - money);
 	accArr[idx_receiver].setBalance(accArr[idx_receiver].getBalance() + money);
-	cout << "Send completed" << endl << endl;
+	cout << "Sending completed" << endl << endl;
 }
 
 void ShowAllAccInfo(void) {

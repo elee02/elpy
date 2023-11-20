@@ -34,6 +34,8 @@ public:
         strncpy(cusName, name, NAME_LEN);
     }
     Account(const Account& arr) : accID{arr.accID}, balance{arr.balance} {
+        delete[] cusName;
+        cusName = new char[NAME_LEN];
         strncpy(cusName, arr.cusName, NAME_LEN);
     }
     Account& operator=(const Account& arr) {
