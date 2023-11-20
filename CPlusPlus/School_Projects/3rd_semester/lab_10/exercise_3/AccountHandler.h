@@ -22,7 +22,6 @@ public:
         for (int i = 0; i < MAX_ACC_NUM; i++) {
             delete accArr[i];
         }
-        delete[] accArr;
         cout << "AccountHandler Destructor Called" << endl;
     }
     void ShowMenu(void);

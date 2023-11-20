@@ -14,6 +14,7 @@ public:
     SavingAccount(int id, int bal, const char* name, int rate) : Account(id, bal, name), m_rate{rate} {}
     
     void Deposit(int) override;
+    
 };
 
 #endif
