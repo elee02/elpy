@@ -18,7 +18,7 @@ void DeleteAccount(void);
 void SendMoney(void);
 int GetAccIdx(int);
 
-enum bank {MAKE = 1, DEPOSIT, SEND, WITHDRAW, INQUIRE, DELETE, EXIT}; // scoped enumeration cannot be used as a constant expression with switch statement
+enum class bank {MAKE = 1, DEPOSIT, SEND, WITHDRAW, INQUIRE, DELETE, EXIT}; // scoped enumeration cannot be used as a constant expression with switch statement
 const int NAME_LEN = 40;
 const int MAX_ACC_NUM = 100;
 

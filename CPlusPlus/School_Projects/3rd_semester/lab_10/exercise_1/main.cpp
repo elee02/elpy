@@ -8,32 +8,32 @@ using namespace std;
 int main(void) {
 	int choice;
 
-	while (1) {
+	while (true) {
 		ShowMenu();
 		cout << "Select menu: ";
 		cin >> choice;
 		cout << endl;
 
-		switch (choice) {
-		case MAKE:
+		switch (bank(choice)) {
+		case bank::MAKE:
 			MakeAccount();
 			break;
-		case DEPOSIT:
+		case bank::DEPOSIT:
 			DepositMoney();
 			break;
-		case SEND:
+		case bank::SEND:
 			SendMoney();
 			break;
-		case WITHDRAW:
+		case bank::WITHDRAW:
 			WithdrawMoney();
 			break;
-		case INQUIRE:
+		case bank::INQUIRE:
 			ShowAllAccInfo();
 			break;
-		case DELETE:
+		case bank::DELETE:
 			DeleteAccount();
 			break;
-		case EXIT:
+		case bank::EXIT:
 			return 0;
 		default:
 			cout << "Illegal selection.." << endl;
