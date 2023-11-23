@@ -24,7 +24,6 @@ public:
     Fraction operator*(const Fraction& snd_op) {
         Fraction res{m_numerator * snd_op.m_numerator, m_denominator * snd_op.m_denominator};
         res.cancelOut();
-        res.checkSign_();
         return res;
     }
 
@@ -60,13 +59,6 @@ public:
         return 0;
     }
 
-    void checkSign_() {
-        if (m_denominator < 0) {
-            m_denominator = abs(m_denominator);
-            m_numerator = -m_numerator;
-        }
-    }
-
     Fraction operator+(const Fraction& fr) {
         int leastMul = lcm(m_denominator, fr.m_denominator);
         int fac1 = leastMul / m_denominator;
@@ -88,7 +80,7 @@ public:
     Fraction operator-() {
         return {-m_numerator, m_denominator};
     }
-    
+
     int getNum() const {
         return m_numerator;
     }
