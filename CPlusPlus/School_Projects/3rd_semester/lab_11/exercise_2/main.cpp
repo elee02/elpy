@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ostream>
 #define MAX(a, b) ((a > b) ? a : b)
+#define MIN(a, b) ((a < b) ? a : b)
 using namespace std;
 
 class Fraction {
@@ -8,38 +9,35 @@ private:
     int m_numerator;
     int m_denominator;
 public:
-    Fraction(int num = 0, int denum = 1) : m_numerator{num}, m_denominator{denum} {
-    int range = MAX(num, denum);
-    
-    for (int i = 0; i < range; i++) {
-        int rem1 = num % i;
-        int rem2 = denum % i;
-
-        if (rem1 == rem2 == 0) {
-            num /= i;
-            denum /= i;
-        }
+    Fraction(int num = 0, int denum = 1) {
+        int commonDiv = gcd(num, denum);
+        m_numerator = num / commonDiv;
+        m_denominator = denum / commonDiv;
     }
 
     Fraction operator*(const Fraction& snd_op) {
         Fraction res{m_numerator * snd_op.m_numerator, m_denominator * snd_op.m_denominator};
-        return cancelOut(res);
+        res.cancelOut();
+        return res;
     }
 
+    void cancelOut() {
+        int commonDiv = gcd(m_numerator, m_denominator);
+        m_numerator /= commonDiv;
+        m_denominator /= commonDiv;
+    }
 
-    Fraction& cancelOut(Fraction& frac) {
-        int range = MAX(frac.getNum(), frac.getDenum());
-        int div = range;
-        
-        for (int i = range; i > 1; i--) {
-            int rem1 = frac.getNum() % i;
-            int rem2 = frac.getDenum() % i;
-
-            if (rem1 == 0 && rem2 == 0) {
-                frac.setNum(frac.getNum() / i);
-                frac.setDenum(frac.getDenum() / i);
-            }
-        }     
+    // Eucilidean Canelletion Algorithm
+    int gcd(int a, int b) {
+        int max = MAX(a, b);
+        int min = MIN(a, b);
+        while (min != 0 ) {
+            int temp = min;
+            min = max % min;
+            max = temp;
+        }
+        return max;
+    }
 
     int getNum() const {
         return m_numerator;
@@ -47,14 +45,13 @@ public:
     int getDenum() const {
         return m_denominator;
     }
-
-    void setNum(int new_num) {
-        m_numerator = new_num;
-    }
-    void setDenum(int new_denum){ 
-        m_denominator = new_denum;
-    }
 };
+
+Fraction operator*(int coef, const Fraction& fr) {
+    Fraction res{coef * fr.getNum(), fr.getDenum()};
+    res.cancelOut();
+    return res;
+}
 
 ostream& operator<<(ostream& out, const Fraction& frac) {
     out << frac.getNum() << "/" << frac.getDenum();
