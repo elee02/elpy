@@ -42,19 +42,19 @@ public:
     int getNum() const {
         return m_numerator;
     }
-    int getDenum() const {
+    int getDenom() const {
         return m_denominator;
     }
 };
 
 Fraction operator*(int coef, const Fraction& fr) {
-    Fraction res{coef * fr.getNum(), fr.getDenum()};
+    Fraction res{coef * fr.getNum(), fr.getDenom()};
     res.cancelOut();
     return res;
 }
 
 ostream& operator<<(ostream& out, const Fraction& frac) {
-    out << frac.getNum() << "/" << frac.getDenum();
+    out << frac.getNum() << "/" << frac.getDenom();
     return out;
 }
 

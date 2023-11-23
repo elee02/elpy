@@ -24,6 +24,7 @@ public:
     Fraction operator*(const Fraction& snd_op) {
         Fraction res{m_numerator * snd_op.m_numerator, m_denominator * snd_op.m_denominator};
         res.cancelOut();
+        res.checkSign_();
         return res;
     }
 
@@ -59,26 +60,56 @@ public:
         return 0;
     }
 
-    Fraction operator+(const Fraction& sub) {
+    void checkSign_() {
+        if (m_denominator < 0) {
+            m_denominator = abs(m_denominator);
+            m_numerator = -m_numerator;
+        }
+    }
 
+    Fraction operator+(const Fraction& fr) {
+        int leastMul = lcm(m_denominator, fr.m_denominator);
+        int fac1 = leastMul / m_denominator;
+        int fac2 = leastMul / fr.m_denominator;
+        Fraction res{m_numerator * fac1 + fr.m_numerator * fac2, leastMul};
+        res.cancelOut();
+        return res;
+    }
+
+    Fraction operator-(const Fraction& fr) {
+        int leastMul = lcm(m_denominator, fr.m_denominator);
+        int fac1 = leastMul / m_denominator;
+        int fac2 = leastMul / fr.m_denominator;
+        Fraction res{m_numerator * fac1 - fr.m_numerator * fac2, leastMul};
+        res.cancelOut();
+        return res;
     }
 
     int getNum() const {
         return m_numerator;
     }
-    int getDenum() const {
+    int getDenom() const {
         return m_denominator;
     }
 };
 
+Fraction operator+(int const_, const Fraction& fr) {
+    return {const_ * fr.getDenom() + fr.getNum(), fr.getDenom()};
+}
+
+Fraction operator-(int const_, const Fraction& fr) {
+    return {const_ * fr.getDenom() - fr.getNum(), fr.getDenom()};
+
+}
+
 Fraction operator*(int coef, const Fraction& fr) {
-    Fraction res{coef * fr.getNum(), fr.getDenum()};
+    Fraction res{coef * fr.getNum(), fr.getDenom()};
     res.cancelOut();
     return res;
 }
 
 ostream& operator<<(ostream& out, const Fraction& frac) {
-    out << frac.getNum() << "/" << frac.getDenum();
+    out << frac.getNum() << "/" << frac.getDenom();
     return out;
 }
 
