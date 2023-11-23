@@ -9,10 +9,10 @@ private:
     int m_numerator;
     int m_denominator;
 public:
-    Fraction(int num = 0, int denum = 1) {
-        int commonDiv = gcd(num, denum);
+    Fraction(int num = 0, int denom = 1) {
+        int commonDiv = gcd(num, denom);
         m_numerator = num / commonDiv;
-        m_denominator = denum / commonDiv;
+        m_denominator = denom / commonDiv;
     }
 
     Fraction operator*(const Fraction& snd_op) {
