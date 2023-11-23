@@ -58,8 +58,6 @@ ostream& operator<<(ostream& out, const Fraction& frac) {
     return out;
 }
 
-
-
 int main() {
     Fraction f1{1, 2}, f2{3, 4};
     cout << f1 << "," << f2 << endl;
