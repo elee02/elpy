@@ -7,24 +7,27 @@ private:
     char* m_txt;
     int m_len;
     friend ostream& operator<<(ostream&, const InhaString&);
-    friend istream& operator>>(istream&, const InhaString&);
+    friend istream& operator>>(istream&, InhaString&);
 public:
     InhaString(const char* txt = "") 
-    : m_txt{new char[strlen(txt)]}, m_len{strlen(txt)} 
+    : m_txt{new char[strlen(txt) + 1]}, m_len{strlen(txt)} 
     {
         strncpy(m_txt, txt, m_len);
+        m_txt[m_len] = '\0';
     }
     InhaString(const InhaString& cpy) {
         delete[] m_txt;
         m_len = cpy.m_len;
-        m_txt = new char[m_len];
-        strncpy(m_txt, cpy.m_txt, cpy.m_len);
+        m_txt = new char[m_len + 1];
+        strncpy(m_txt, cpy.m_txt, m_len);
+        m_txt[m_len] = '\0';
     }
     InhaString& operator=(const InhaString& cpy) {
         delete[] m_txt;
         m_len = cpy.m_len;
-        m_txt = new char[m_len];
-        strncpy(m_txt, cpy.m_txt, cpy.m_len);
+        m_txt = new char[m_len + 1];
+        strncpy(m_txt, cpy.m_txt, m_len);
+        m_txt[m_len] = '\0';
     }
 
     InhaString operator+(const InhaString& nxt_str) {
@@ -68,8 +71,24 @@ ostream& operator<<(ostream& out, const InhaString& nxt_str) {
     out << nxt_str.m_txt;
     return out;
 }
-istream& operator>>(istream& in, const InhaString& nxt_str) {
-    
+istream& operator>>(istream& in, InhaString& nxt_str) {
+    int capacity = 10;
+    delete[] nxt_str.m_txt;
+    nxt_str.m_txt = new char[capacity];
+    int size = 0;
+
+    char c;
+    while (in.get(c) && c != '\n') {
+        if (size == (capacity - 1)) {
+            capacity *= 2;
+            char* temp = new char[capacity];
+            strncpy(temp, nxt_str.m_txt, capacity);
+            delete[] nxt_str.m_txt;
+            nxt_str.m_txt = temp;
+        }
+        nxt_str.m_txt[size++] = c;
+    }
+    return in;
 }
 int main() {
     InhaString str1 = "I like ";
