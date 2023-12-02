@@ -7,11 +7,15 @@ int main() {
     string str2 = "string class";
     string str3 = str1 + str2;
 
+    cout << str1 << endl;
+    cout << str2 << endl;
+    cout << str3 << endl;
+
     str1 += str2;
     if (str1 == str3) {
-        cout << "The strings are the same" << endl;
+        cout << "Two strings are identical" << endl;
     } else {
-        cout << "The strings are different" << endl;
+        cout << "Two strings are different" << endl;
     }
 
     string str4;
