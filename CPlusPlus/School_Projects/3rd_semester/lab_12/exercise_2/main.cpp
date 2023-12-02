@@ -5,7 +5,7 @@ using namespace std;
 class InhaString {
 private:
     char* m_txt;
-    int m_len;
+    size_t m_len;
     friend ostream& operator<<(ostream&, const InhaString&);
     friend istream& operator>>(istream&, InhaString&);
 public:
@@ -28,6 +28,7 @@ public:
         m_txt = new char[m_len + 1];
         strncpy(m_txt, cpy.m_txt, m_len);
         m_txt[m_len] = '\0';
+        return *this;
     }
 
     InhaString operator+(const InhaString& nxt_str) {
