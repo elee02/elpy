@@ -38,6 +38,14 @@ public:
         }
         return {new_str};
     }
+    bool operator==(const InhaString& nxt_str) const {
+        if (m_len != nxt_str.m_len) return false;
+        for (int i = 0; i < m_len; i++) {
+            if (m_txt[i] != nxt_str.m_txt[i])
+                return false;
+        }
+        return true;
+    }
 
 
 };
