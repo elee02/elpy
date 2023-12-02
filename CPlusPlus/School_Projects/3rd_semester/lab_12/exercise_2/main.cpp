@@ -32,7 +32,7 @@ public:
     }
 
     InhaString operator+(const InhaString& nxt_str) {
-        int new_str_len = m_len + nxt_str.m_len;
+        int new_str_len = m_len + nxt_str.m_len + 1;
         char new_str[new_str_len];
         for (int i = 0; i < new_str_len; i++) {
             if (i < m_len) {
@@ -41,6 +41,7 @@ public:
                 new_str[i] = nxt_str.m_txt[i - m_len + 1];
             }
         }
+        new_str[new_str_len] = '\0';
         return {new_str};
     }
     bool operator==(const InhaString& nxt_str) const {
