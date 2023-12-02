@@ -10,33 +10,41 @@ private:
     friend istream& operator>>(istream&, InhaString&);
 public:
     InhaString(const char* txt = "") 
-    : m_txt{new char[strlen(txt)]}, m_len{strlen(txt)} 
+    : m_txt{new char[strlen(txt) + 1]}, m_len{strlen(txt)} 
     {
         strncpy(m_txt, txt, m_len);
+        m_txt[m_len] = '\0';
     }
     InhaString(const InhaString& cpy) {
-        delete[] m_txt;
-        m_len = cpy.m_len;
-        m_txt = new char[m_len];
-        strncpy(m_txt, cpy.m_txt, m_len);
+        if (this != &cpy) {
+            delete[] m_txt;
+            m_len = cpy.m_len;
+            m_txt = new char[m_len + 1];
+            strncpy(m_txt, cpy.m_txt, m_len);
+            m_txt[m_len] = '\0';
+        }
     }
     InhaString& operator=(const InhaString& cpy) {
-        delete[] m_txt;
-        m_len = cpy.m_len;
-        m_txt = new char[m_len];
-        strncpy(m_txt, cpy.m_txt, m_len);
+        if (this != &cpy) {
+            delete[] m_txt;
+            m_len = cpy.m_len;
+            m_txt = new char[m_len + 1];
+            strncpy(m_txt, cpy.m_txt, m_len);
+            m_txt[m_len] = '\0';
+        }
         return *this;
     }
 
     InhaString operator+(const InhaString& nxt_str) {
         int new_str_len = m_len + nxt_str.m_len;
-        char new_str[new_str_len];
+        char new_str[new_str_len + 1];
         for (int i = 0; i < new_str_len; i++) {
             if (i < m_len) {
                 new_str[i] = m_txt[i];
             } else {
                 new_str[i] = nxt_str.m_txt[i - m_len];
             }
+            new_str[new_str_len] = '\0';
         }
         return {new_str};
     }
@@ -59,6 +67,7 @@ ostream& operator<<(ostream& out, const InhaString& nxt_str) {
     out << nxt_str.m_txt;
     return out;
 }
+// Dynamically handles the size of istream
 istream& operator>>(istream& in, InhaString& nxt_str) {
     int capacity = 10;
     delete[] nxt_str.m_txt;
@@ -76,6 +85,7 @@ istream& operator>>(istream& in, InhaString& nxt_str) {
         }
         nxt_str.m_txt[size++] = c;
     }
+    nxt_str.m_txt[size] = '\0';
     return in;
 }
 int main() {
