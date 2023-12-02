@@ -10,38 +10,34 @@ private:
     friend istream& operator>>(istream&, InhaString&);
 public:
     InhaString(const char* txt = "") 
-    : m_txt{new char[strlen(txt) + 1]}, m_len{strlen(txt)} 
+    : m_txt{new char[strlen(txt)]}, m_len{strlen(txt)} 
     {
         strncpy(m_txt, txt, m_len);
-        m_txt[m_len] = '\0';
     }
     InhaString(const InhaString& cpy) {
         delete[] m_txt;
         m_len = cpy.m_len;
-        m_txt = new char[m_len + 1];
+        m_txt = new char[m_len];
         strncpy(m_txt, cpy.m_txt, m_len);
-        m_txt[m_len] = '\0';
     }
     InhaString& operator=(const InhaString& cpy) {
         delete[] m_txt;
         m_len = cpy.m_len;
-        m_txt = new char[m_len + 1];
+        m_txt = new char[m_len];
         strncpy(m_txt, cpy.m_txt, m_len);
-        m_txt[m_len] = '\0';
         return *this;
     }
 
     InhaString operator+(const InhaString& nxt_str) {
-        int new_str_len = m_len + nxt_str.m_len + 1;
+        int new_str_len = m_len + nxt_str.m_len;
         char new_str[new_str_len];
         for (int i = 0; i < new_str_len; i++) {
             if (i < m_len) {
                 new_str[i] = m_txt[i];
             } else {
-                new_str[i] = nxt_str.m_txt[i - m_len + 1];
+                new_str[i] = nxt_str.m_txt[i - m_len];
             }
         }
-        new_str[new_str_len] = '\0';
         return {new_str};
     }
     bool operator==(const InhaString& nxt_str) const {
@@ -54,17 +50,7 @@ public:
     }
 
     const InhaString& operator+=(const InhaString& nxt_str) {
-        int new_str_len = m_len + nxt_str.m_len;
-        char* new_str = new char[new_str_len];
-        for (int i = 0; i < new_str_len; i++) {
-            if (i < m_len) {
-                new_str[i] = m_txt[i];
-            } else {
-                new_str[i] = nxt_str.m_txt[i - m_len + 1];
-            }
-        }
-        delete[] m_txt;
-        m_txt = new_str;
+        *this = *this + nxt_str;
         return *this;
     }
 };
