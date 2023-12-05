@@ -44,8 +44,8 @@ public:
             } else {
                 new_str[i] = nxt_str.m_txt[i - m_len];
             }
-            new_str[new_str_len] = '\0';
         }
+        new_str[new_str_len] = '\0';
         return {new_str};
     }
     bool operator==(const InhaString& nxt_str) const {
