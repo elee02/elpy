@@ -1,0 +1,1 @@
+$\mathbf{a}^{2}-\mathbf{b}^{2}=(\mathbf{a}+\mathbf{b})(\mathbf{a}-\mathbf{b})$
