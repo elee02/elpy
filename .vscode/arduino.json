@@ -1,5 +1,6 @@
 {
     "port": "/dev/tty.usbmodem14101",
     "board": "arduino:avr:uno",
-    "programmer": "avrisp"
+    "programmer": "avrisp",
+    "sketch": "Arduino/rfid_examples/ex01.ino"
 }
