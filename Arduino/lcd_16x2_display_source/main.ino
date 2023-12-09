@@ -1,44 +1,22 @@
 #include <LiquidCrystal.h>
-#include <string.h>
 
-const int rs{12}, e{11}, d4{5}, d5{4}, d6{3}, d7{2};
-LiquidCrystal lcd{rs, e, d4, d5, d6, d7};
-const int numCols{16}, numRows{2};
-
-String msg = "Hello Arduino Uno!";
-size_t msg_size{msg.length()+1};
-size_t cms{1}; //current_massage_size
-size_t overflow{msg_size-16};
-size_t o16{0};
-char row1[numCols], row2[numCols];
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 void setup() {
-  lcd.begin(numCols, numRows);
+  lcd.begin(16, 2);
 }
 
 void loop() {
-  lcd.setCursor(16,0);
-  while (true) {
-    if (cms < numCols && o16 < overflow) {
-      for (int i = 0; i < cms; i++) {
-    	row1[16-cms+i] = msg[i];
-      }
-      cms++;
-    } else if (cms == numCols && o16 < overflow) {
-      for (int i = 0; i < numCols; i++) {
-        row1[i] = msg[o16 + i];
-      }
-      o16++;
-    } else break;
-      
-    pCharArray(row1, lcd);
+  String text = "This is a long text that will scroll on the first row of the LCD.";
+  for (int positionCounter = 0; positionCounter < text.length(); positionCounter++) {
+    lcd.setCursor(0, 0); // Set cursor to the start of the first row
+    for (int i = 0; i < 16; i++) {
+      // Print 16 characters of the text string at a time
+      lcd.print(text[positionCounter + i]);
+    }
+    delay(500); // Delay for readability
+    lcd.clear(); // Clear the LCD
   }
-  delay(1000);
-  lcd.clear();
-}
-
-void pCharArray(char* txt, LiquidCrystal& display) {
-  for (int i = 0; i < 16; i++) {
-    display.print(txt[i]);
-  }
+  lcd.setCursor(0, 1); // Set cursor to the start of the second row
+  lcd.print("This is the second row."); // Print a static message on the second row
 }
