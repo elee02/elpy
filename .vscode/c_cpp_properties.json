@@ -7,7 +7,9 @@
             ],
             "defines": [],
             "macFrameworkPath": [
-                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
+                "/Users/elyordusyor-uglirasulov/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/libraries",
+                "/Users/elyordusyor-uglirasulov/Library/Arduino15/libraries"
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
