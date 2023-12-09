@@ -1,0 +1,4 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "lcd_16x2_display_source/main.ino"
+}
