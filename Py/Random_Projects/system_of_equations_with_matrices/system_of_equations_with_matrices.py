@@ -9,7 +9,10 @@ A = np.array([[1/4.7+2, -0.5, -1],
 b = np.array([2.5, 5, 0])
 
 # Solve the system of equations
-x = np.linalg.solve(A, b)
+# x = np.linalg.solve(A, b)
+
+A_inv = np.linalg.inv(A)
+x = A_inv @ b
 
 # Print the solution
 print("Solution:", x)
