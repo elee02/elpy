@@ -21,3 +21,11 @@ public:
         delete[] m_array;
     }
 };
+
+int main() {
+    Derived* derived = new Derived(5);
+    Base* base = derived;
+    delete base;
+
+    return 0;
+}
