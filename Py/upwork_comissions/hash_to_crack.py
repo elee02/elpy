@@ -1,8 +1,10 @@
 import hashlib
 
+# encoding, hashing and converting the password
 def hash_password(password: str, algorithm: str = 'sha256') -> str:
     return getattr(hashlib, algorithm)(password.encode()).hexdigest()
 
+# take in a dict to hash and check if it matches
 def crack_hash(hash_to_crack: dict, algorithm: str = 'sha256') -> dict:
     password_list = ['123456', 'password', 'admin']  # This should be replaced with a real password list
     for password in password_list:
