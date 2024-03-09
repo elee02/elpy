@@ -81,9 +81,9 @@ int main() {
     Friend* friend2 = new SchFriend("Qamariddin", 23, 12, "Optician");
     Friend* friend3 = new Friend("Lochin", 22, 20);
 
-    friend1 -> ShowInfo();
-    friend2 -> ShowInfo();
-    friend3 -> ShowInfo();
+    friend1 -> ShowInfo(); cout << endl;
+    friend2 -> ShowInfo(); cout << endl;
+    friend3 -> ShowInfo(); cout << endl;
 
     return 0;
 }
