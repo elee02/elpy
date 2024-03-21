@@ -3,19 +3,24 @@
 #include <iostream>
 using namespace std;
 
-int INDEX(const char*& text, const char*& pattern) {
+int INDEX(const char* text, const char* pattern) {
     int INDEX = -1;
-    int S = sizeof(text);
-    int R = sizeof(pattern);
+    int S = sizeof(text) - 1; // because \0 is also counted
+    int R = sizeof(pattern) - 1;
 
-    int K = 0, MAX = S + R - 1;
+    cout << S << endl;
+    cout << R << endl;
+
+    int K = 0, MAX = S - R;
     while (K <= MAX) {
         for (int I = 0; I < R; I++) {
-            if pattern[I] != text[K + I - 1];
-            continue;
-            INDEX = K;
+            if (pattern[I] != text[K + I]) break;
+            if (I == R - 1) {
+                INDEX = K;
+                break;
+            }
         }
-        K = K + 1;
+        K += 1;
     }
     return INDEX;
 }
@@ -23,7 +28,7 @@ int INDEX(const char*& text, const char*& pattern) {
 int main() {
     char text[] = "You cannot lie to me!";
     char pattern[] =  "can";
-    cout << "The index of patern "<< pattern << " in the text "<< text << " is " << INDEX(text, pattern) << endl;
+    cout << "Index of '" << pattern << "' in '" << text << "' is " << INDEX(text, pattern) << endl;
 
     return 0;
 }
