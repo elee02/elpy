@@ -3,16 +3,17 @@ using namespace std;
 
 size_t second_greatest(int *num, size_t s) {
     int prev = 0, cur = num[0];
+    int prev_idx = 0, cur_idx = 0;
 
     for (int i = 1; i < s; i++) {
         if (num[i] > cur) {
             prev = cur;
+            prev_idx = cur_idx;
             cur = num[i];
+            cur_idx = i;
         }
     }
-    return prev;
-
-
+    return prev_idx;
 }
 
 int main() {
