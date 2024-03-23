@@ -4,7 +4,10 @@
 #include <cstring>
 using namespace std;
 
-
+// The first pattern matching algorithm's implementation
+// Since I am using char arrays instead of string
+// object, the INDEX() function takes additional
+// "txt_s" - text size, and "ptrn_s" - pattern size arguments
 int INDEX(char* text, int txt_s, char* pattern, int ptr_s) {
     int index = -1;
 
@@ -21,11 +24,17 @@ int INDEX(char* text, int txt_s, char* pattern, int ptr_s) {
     }
     return index;
 }
+// Structre is defined as a means of
+// receiving data from readStr() function
+// as it should return two types of data 
+// types at once
 typedef struct {
     char* text;
     size_t size;
 } INFO;
 
+// this function dynamically handles string input
+// of any size through char arrays
 INFO readinStr(char* txt) {
     INFO cred;
     txt = new char[10];
@@ -61,7 +70,6 @@ int main() {
     cout << "Exit?" << endl;
     cin >> yesno;
     if (yesno == 1) break;
-    cin.clear();
     cin.ignore();
 
     char *txt = nullptr, *ptrn = nullptr;
