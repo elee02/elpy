@@ -30,7 +30,7 @@ int main() {
     cout << "   (d) " << T.find("THE") << endl;
     if (T.find("THEN") != std::string::npos) {
         cout << "   (e) " << T.find("THEN") << endl;
-    } else cout << "Not Found!" << endl;
+    } else cout << "   (e) Not Found!" << endl;
     cout << "   (f) " << T.find("TE") << endl << endl;
 
     // Problem 3.8
@@ -43,8 +43,11 @@ int main() {
     cout << "3.9 Find (a) DELETE('AAABBB', 3, 3), (b) DELETE('AAABBB', 1, 4),\n(c) DELETE(S, 1, 3) and (d) DELETE(T, 1, 7):" << endl;
     cout << "   (a) " << string("AAABBB").erase(2, 3) << endl;
     cout << "   (b) " << string("AAABBB").erase(0, 4) << endl;
-    cout << "   (c) " << S.erase(0, 3) << endl;
-    cout << "   (d) " << T.erase(0, 7) << endl << endl;
+    // creating copy of S string since .erase() is an inplace method
+    string copyOfS = S, copyOfT = T;
+
+    cout << "   (c) " << copyOfS.erase(0, 3) << endl;
+    cout << "   (d) " << copyOfT.erase(0, 7) << endl << endl;
 
     // Problem 3.10
     cout << "3.10 Find (a) REPLACE('ABABAB', 'B', 'BAB'), (b) REPLACE(S, 'WE', 'ALL') and\n(c) REPLACE(T, 'THE', 'THESE'):" << endl;
@@ -61,18 +64,17 @@ int main() {
     
     // Problem 3.12
     cout << "3.12 Suppose U is the text 'MARC STUDIES MATHEMATICS'. Use INSERT\nto change U so that it reads: (a) 'MARC STUDIES ONLY MATHEMATICS' (b) 'MARC STUDIES':" << endl;
+    // Part (a)
     string U = "MARC STUDIES MATHEMATICS";
     string t2 = "ONLY";
     for (int i = 0; i < t2.length(); i++) {
         U = U.insert(U.find("MATHEMATICS"), 1, t2[i]);
     }
+    U = U.insert(U.find("MATHEMATICS"), 1, ' ');
     cout << "   (a) " << U << endl;
+    // Part (b)
     U = "MARC STUDIES MATHEMATICS";
-    int start_idx = U.find("MATHEMATICS");
-    int start_len = U.length() - (start_idx + 1);
-    for (int i = 0; i < start_len; i++) {
-        U = U.insert(start_idx, "");
-    }
+    U.erase(U.find("MATHEMATICS"), string("MATHEMATICS").length());
     cout << "   (b) " << U << endl << endl;
 
     return 0;
