@@ -18,7 +18,7 @@ int states[6][3] = {
 };
 
 int main() {
-    char T[80] = "youcansayanything.comaabbaabbbfsseaavvbbabbaabaabbba";
+    char T[80] = "youcansayanything.combalbalalblalbalbalblaabbaaabababababaababbbaaba";
     char P[80] = "aabbaa";
     int K = 0, S = 0, I = 0, INDEX = -1, NT = strlen(T), NP = strlen(P);
 
