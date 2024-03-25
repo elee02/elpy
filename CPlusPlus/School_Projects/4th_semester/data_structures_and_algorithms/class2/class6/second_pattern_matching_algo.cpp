@@ -33,8 +33,7 @@ int main() {
     }
 
     if (S == -1) {
-        INDEX = (K - NP); // sizeof() => N+1
-    // Plus, indexing starts with 0;
+        INDEX = (K - NP); // Indexing starts with 0;
     } else {
         INDEX = -1;
     }
