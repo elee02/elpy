@@ -1,7 +1,5 @@
 // Second Pattern matching algorithm using graphs/tables
 #include <iostream>
-#include <thread>
-#include <chrono>
 #include <cstring>
 using namespace std;
 
