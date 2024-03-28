@@ -79,17 +79,20 @@ print(pd.DataFrame(names_and_links, columns= ['Name', 'Link']))
 ###########################
 
 def get_date_filed(name_and_link):
-    r = requests.get(header_link + name_and_link[1])
-    r.raise_for_status()
-    comps = bs4.BeautifulSoup(r.text, 'html.parser')
+    with requests.Session() as session:
+        try:
+            r = session.get(header_link + name_and_link[1])
+            r.raise_for_status()
+            comps = bs4.BeautifulSoup(r.text, 'html.parser')
 
-    date_filed = comps.find_all('label', attrs = {'for': 'Detail_FileDate'})
-    date_filed = date_filed[0].next_sibling.text
-    name_and_link.append(date_filed)
+            date_filed = comps.find_all('label', attrs = {'for': 'Detail_FileDate'})
+            date_filed = date_filed[0].next_sibling.text
+            name_and_link.append(date_filed)
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {e}")
 
-with concurrent.futures.ThreadPoolExecutor() as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     executor.map(get_date_filed, names_and_links)
-
 ###########################
     
 namelink_dt = pd.DataFrame(names_and_links, columns = ['Name', 'Link', 'Date Filed'])
