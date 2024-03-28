@@ -4,7 +4,7 @@ import requests
 import concurrent.futures
 
 names_and_links = []
-keyword = "hot spring"
+keyword = "paradise"
 header_link = 'https://search.sunbiz.org/'
 r = requests.get(f'{header_link}Inquiry/CorporationSearch/SearchResults/EntityName/{keyword}/Page1?searchNameOrder={keyword.upper()}')
 r.raise_for_status()
