@@ -2,6 +2,8 @@ import pandas as pd
 import bs4
 import requests
 import concurrent.futures
+import time
+import threading
 
 names_and_links = []
 keyword = "paradise"
@@ -78,6 +80,25 @@ print(pd.DataFrame(names_and_links, columns= ['Name', 'Link']))
 
 ###########################
 
+# Custom thread class
+class MyThread(threading.Thread):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.do_run = True
+
+    def run(self):
+        start_time = time.time()
+        while self.do_run:
+            time_elapsed = time.time() - start_time
+            print(f'Time elapsed: {time_elapsed} seconds')
+            time.sleep(1)
+
+# Start the timer thread
+timer_thread = MyThread()
+timer_thread.start()
+
+###########################
+
 def get_date_filed(name_and_link):
     with requests.Session() as session:
         try:
@@ -93,8 +114,14 @@ def get_date_filed(name_and_link):
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     executor.map(get_date_filed, names_and_links)
+
 ###########################
     
+timer_thread.do_run = False
+timer_thread.join()
+
+###########################
+
 namelink_dt = pd.DataFrame(names_and_links, columns = ['Name', 'Link', 'Date Filed'])
 
 ###########################
